@@ -41,7 +41,7 @@ export default function Skills() {
           className="section-header"
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] as const }}
         >
           <p className="section-label">Skills</p>
           <h2 className="section-title">Tech Stack</h2>
@@ -60,7 +60,7 @@ export default function Skills() {
               transition={{
                 duration: 0.6,
                 delay: 0.2 + i * 0.1,
-                ease: [0.16, 1, 0.3, 1],
+                ease: [0.16, 1, 0.3, 1] as const,
               }}
             >
               <div className={`skill-category-icon ${cat.iconClass}`}>

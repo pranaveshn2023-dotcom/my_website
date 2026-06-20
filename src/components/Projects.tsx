@@ -54,7 +54,7 @@ export default function Projects() {
           className="section-header"
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] as const }}
         >
           <p className="section-label">Projects</p>
           <h2 className="section-title">What I've Built</h2>
@@ -70,7 +70,7 @@ export default function Projects() {
               className="project-card"
               initial={{ opacity: 0, y: 60 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.2 + i * 0.15, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.8, delay: 0.2 + i * 0.15, ease: [0.16, 1, 0.3, 1] as const }}
             >
               <div className="project-card-inner">
                 <div className="project-card-content">

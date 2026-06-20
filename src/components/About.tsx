@@ -21,7 +21,7 @@ export default function About() {
           className="section-header"
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] as const }}
         >
           <p className="section-label">About</p>
           <h2 className="section-title">Who Am I?</h2>
@@ -32,7 +32,7 @@ export default function About() {
             className="about-text"
             initial={{ opacity: 0, x: -40 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] as const }}
           >
             <p>
               I'm an Electronics and Communication Engineering student at VIT Chennai
@@ -51,7 +51,7 @@ export default function About() {
                   className="about-interest-tag"
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={inView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ duration: 0.4, delay: 0.4 + i * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                  transition={{ duration: 0.4, delay: 0.4 + i * 0.08, ease: [0.16, 1, 0.3, 1] as const }}
                 >
                   <span>{interest.icon}</span>
                   {interest.label}
@@ -64,7 +64,7 @@ export default function About() {
             className="about-stats"
             initial={{ opacity: 0, x: 40 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] as const }}
           >
             {[
               { value: '2', label: 'Products Shipped' },
@@ -77,7 +77,7 @@ export default function About() {
                 className="about-stat-card"
                 initial={{ opacity: 0, y: 20 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.4 + i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: 0.5, delay: 0.4 + i * 0.1, ease: [0.16, 1, 0.3, 1] as const }}
               >
                 <div className="about-stat-value">{stat.value}</div>
                 <div className="about-stat-label">{stat.label}</div>

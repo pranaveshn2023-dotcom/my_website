@@ -32,7 +32,7 @@ export default function Journey() {
           className="section-header"
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] as const }}
         >
           <p className="section-label">Journey</p>
           <h2 className="section-title">The Timeline</h2>
@@ -45,7 +45,7 @@ export default function Journey() {
               className="timeline-item"
               initial={{ opacity: 0, x: -30 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.2 + i * 0.15, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.6, delay: 0.2 + i * 0.15, ease: [0.16, 1, 0.3, 1] as const }}
             >
               <div className="timeline-dot">
                 <div className="timeline-dot-inner" />

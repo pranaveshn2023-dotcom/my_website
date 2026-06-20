@@ -21,7 +21,7 @@ export default function Achievements() {
           className="section-header"
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] as const }}
         >
           <p className="section-label">Achievements</p>
           <h2 className="section-title">Milestones</h2>
@@ -40,7 +40,7 @@ export default function Achievements() {
               transition={{
                 duration: 0.5,
                 delay: 0.15 + i * 0.08,
-                ease: [0.16, 1, 0.3, 1],
+                ease: [0.16, 1, 0.3, 1] as const,
               }}
             >
               <span className="achievement-emoji">{item.emoji}</span>
