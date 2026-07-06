@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { FileText } from 'lucide-react'
 
 const interests = [
   { label: 'AI Applications', icon: '🤖' },
@@ -9,7 +10,11 @@ const interests = [
   { label: 'Product Building', icon: '🚀' },
 ]
 
-export default function About() {
+interface AboutProps {
+  onOpenResume: () => void
+}
+
+export default function About({ onOpenResume }: AboutProps) {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-100px' })
 
@@ -58,6 +63,18 @@ export default function About() {
                 </motion.span>
               ))}
             </div>
+
+            <motion.div
+              style={{ marginTop: '24px' }}
+              initial={{ opacity: 0, y: 15 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.6, ease: [0.16, 1, 0.3, 1] as const }}
+            >
+              <button onClick={onOpenResume} className="btn btn-secondary" id="about-resume-btn">
+                <FileText size={16} />
+                <span>View Full Resume (PDF)</span>
+              </button>
+            </motion.div>
           </motion.div>
 
           <motion.div
@@ -89,3 +106,4 @@ export default function About() {
     </section>
   )
 }
+

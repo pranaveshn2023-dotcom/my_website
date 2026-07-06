@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ArrowRight, Mail } from 'lucide-react'
+import { ArrowRight, Mail, FileText } from 'lucide-react'
 
 /* Inline SVG icons for social platforms */
 const GitHubIcon = () => (
@@ -33,7 +33,11 @@ const item = {
   show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const } },
 }
 
-export default function Hero() {
+interface HeroProps {
+  onOpenResume: () => void
+}
+
+export default function Hero({ onOpenResume }: HeroProps) {
   return (
     <section className="hero" id="hero">
       <div className="hero-bg-glow" />
@@ -67,6 +71,10 @@ export default function Hero() {
             <ArrowRight size={16} />
             View My Work
           </a>
+          <button onClick={onOpenResume} className="btn btn-secondary" id="hero-resume-btn">
+            <FileText size={16} />
+            View Resume
+          </button>
           <a href="#contact" className="btn btn-secondary">
             <Mail size={16} />
             Get In Touch
@@ -91,3 +99,4 @@ export default function Hero() {
     </section>
   )
 }
+

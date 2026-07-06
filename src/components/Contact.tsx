@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Mail, Phone, MessageCircle } from 'lucide-react'
+import { Mail, Phone, MessageCircle, FileText } from 'lucide-react'
 
 const LinkedInIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -8,7 +8,11 @@ const LinkedInIcon = () => (
   </svg>
 )
 
-export default function Contact() {
+interface ContactProps {
+  onOpenResume: () => void
+}
+
+export default function Contact({ onOpenResume }: ContactProps) {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-100px' })
 
@@ -30,6 +34,10 @@ export default function Contact() {
           </p>
 
           <div className="contact-links">
+            <button onClick={onOpenResume} className="contact-link" id="contact-resume" style={{ cursor: 'pointer' }}>
+              <FileText size={16} />
+              View Resume (PDF)
+            </button>
             <a href="mailto:pranaveshnandakumar@gmail.com" className="contact-link" id="contact-email">
               <Mail size={16} />
               Email Me
@@ -52,3 +60,4 @@ export default function Contact() {
     </section>
   )
 }
+

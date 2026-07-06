@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { FileText } from 'lucide-react'
 
 const navLinks = [
   { label: 'About', href: '#about' },
@@ -7,7 +8,11 @@ const navLinks = [
   { label: 'Journey', href: '#journey' },
 ]
 
-export default function Navbar() {
+interface NavbarProps {
+  onOpenResume: () => void
+}
+
+export default function Navbar({ onOpenResume }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
 
@@ -37,6 +42,10 @@ export default function Navbar() {
           {navLinks.map((link) => (
             <a key={link.href} href={link.href}>{link.label}</a>
           ))}
+          <button onClick={onOpenResume} className="navbar-resume-btn" id="nav-resume-btn">
+            <FileText size={14} />
+            <span>Resume</span>
+          </button>
           <a href="#contact" className="navbar-cta">Contact</a>
         </div>
 
@@ -64,6 +73,17 @@ export default function Navbar() {
             {navLinks.map((link) => (
               <a key={link.href} href={link.href} onClick={handleNavClick}>{link.label}</a>
             ))}
+            <button
+              onClick={() => {
+                handleNavClick()
+                onOpenResume()
+              }}
+              style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--accent)', fontWeight: 600, padding: '8px 0', textAlign: 'left' }}
+              id="mobile-nav-resume-btn"
+            >
+              <FileText size={18} />
+              <span>View Resume (PDF)</span>
+            </button>
             <a href="#contact" onClick={handleNavClick}>Contact</a>
           </motion.div>
         )}
@@ -71,3 +91,4 @@ export default function Navbar() {
     </motion.nav>
   )
 }
+
