@@ -686,6 +686,12 @@ ul, ol {
   border: 1px solid rgba(168, 85, 247, 0.2);
 }
 
+.project-tag-valarchix {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10B981;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
 .project-card h3 {
   font-size: 28px;
   font-weight: 800;

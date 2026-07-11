@@ -4,6 +4,25 @@ import { ExternalLink, Rocket } from 'lucide-react'
 
 const projects = [
   {
+    title: 'valarchiX',
+    tag: 'OS for Financial Knowledge',
+    tagClass: 'project-tag-valarchix',
+    description:
+      'An interactive, educational platform designed to build deep financial knowledge. Empowering users to evaluate business models, assess mutual funds, calculate compounding, and compare tax regimes through dynamic data models.',
+    features: [
+      'AMFI NAV Sourcing & Screener',
+      'Broker Statement Parser (PDF/Excel)',
+      'Union Budget 2025 Tax Hub',
+      'Interactive Compounding Planners',
+      'Calculation Transparency Panels',
+    ],
+    buttons: [
+      { label: 'Visit valarchiX', href: 'https://valarchix.vercel.app', icon: 'external' },
+    ],
+    gradient: 'linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(5, 150, 105, 0.06) 100%)',
+    logo: '/valarchix-logo.jpg',
+  },
+  {
     title: 'Sikkanam',
     tag: 'AI Travel Planner',
     tagClass: 'project-tag-sikkanam',

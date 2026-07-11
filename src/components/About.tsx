@@ -7,6 +7,7 @@ const interests = [
   { label: 'Travel Technology', icon: '✈️' },
   { label: 'Web Development', icon: '🌐' },
   { label: 'Chrome Extensions', icon: '🧩' },
+  { label: 'Financial Technology', icon: '💰' },
   { label: 'Product Building', icon: '🚀' },
 ]
 
@@ -84,7 +85,7 @@ export default function About({ onOpenResume }: AboutProps) {
             transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] as const }}
           >
             {[
-              { value: '2', label: 'Products Shipped' },
+              { value: '3', label: 'Products Shipped' },
               { value: '🚀', label: 'Product Hunt Launch' },
               { value: '✅', label: 'Chrome Store Published' },
               { value: '🎓', label: 'ECE @ VIT Chennai' },

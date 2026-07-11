@@ -12,7 +12,7 @@ const timelineData = [
   },
   {
     year: '2026',
-    text: 'Launched Sikkanam on Product Hunt. Published Marakadhey on the Chrome Web Store. Two live products out in the world.',
+    text: 'Launched valarchiX (Operating System for Financial Knowledge), Sikkanam on Product Hunt, and Marakadhey on the Chrome Web Store. Three live products shipped.',
   },
   {
     year: 'Next',

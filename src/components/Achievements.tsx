@@ -4,7 +4,7 @@ import { motion, useInView } from 'framer-motion'
 const achievements = [
   { emoji: '🚀', text: 'Product Hunt Launch' },
   { emoji: '✅', text: 'Chrome Web Store Published' },
-  { emoji: '🏗️', text: '2 Live Products Built' },
+  { emoji: '🏗️', text: '3 Live Products Built' },
   { emoji: '🎓', text: 'VIT Chennai Student' },
   { emoji: '🤖', text: 'AI Travel Platform Creator' },
 ]

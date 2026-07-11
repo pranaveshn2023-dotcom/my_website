@@ -62,7 +62,7 @@ export default function Hero({ onOpenResume }: HeroProps) {
         </motion.p>
 
         <motion.p variants={item} className="hero-description-sub">
-          Creator of <span className="highlight">Sikkanam</span> &{' '}
+          Creator of <span className="highlight">valarchiX</span>, <span className="highlight">Sikkanam</span> &{' '}
           <span className="highlight">Marakadhey</span>
         </motion.p>
 
