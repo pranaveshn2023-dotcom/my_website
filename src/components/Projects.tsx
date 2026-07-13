@@ -4,7 +4,7 @@ import { ExternalLink, Rocket } from 'lucide-react'
 
 const projects = [
   {
-    title: 'valarchiX',
+    title: 'ValarchiX',
     tag: 'OS for Financial Knowledge',
     tagClass: 'project-tag-valarchix',
     description:
@@ -12,15 +12,13 @@ const projects = [
     features: [
       'AMFI NAV Sourcing & Screener',
       'Broker Statement Parser (PDF/Excel)',
-      'Union Budget 2025 Tax Hub',
-      'Interactive Compounding Planners',
-      'Calculation Transparency Panels',
+      'Personal Finance Calculators'
     ],
     buttons: [
-      { label: 'Visit valarchiX', href: 'https://valarchix.vercel.app', icon: 'external' },
+      { label: 'Visit ValarchiX', href: 'https://valarchix.vercel.app', icon: 'external' },
     ],
     gradient: 'linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(5, 150, 105, 0.06) 100%)',
-    logo: '/valarchix-logo.jpg',
+    logo: '/valarchix-logo.png',
   },
   {
     title: 'Sikkanam',
