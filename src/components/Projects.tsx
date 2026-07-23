@@ -12,10 +12,12 @@ const projects = [
     features: [
       'AMFI NAV Sourcing & Screener',
       'Broker Statement Parser (PDF/Excel)',
-      'Personal Finance Calculators'
+      'Personal Finance Calculators',
+      'Launched on Product Hunt',
     ],
     buttons: [
       { label: 'Visit ValarchiX', href: 'https://valarchix.vercel.app', icon: 'external' },
+      { label: 'Product Hunt', href: 'https://www.producthunt.com/products/valarchix', icon: 'rocket' },
     ],
     gradient: 'linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(5, 150, 105, 0.06) 100%)',
     logo: '/valarchix-logo.png',
