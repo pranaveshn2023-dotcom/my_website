@@ -41,17 +41,20 @@ export default function About({ onOpenResume }: AboutProps) {
             transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] as const }}
           >
             <p>
-              I'm an Electronics and Communication Engineering student at VIT Chennai
-              who enjoys turning ideas into real products.
+              I'm an ECE Engineer at VIT Chennai (CGPA: 7.53) with a strong focus on Product Development.
+              I specialize in building full-stack PWA websites and applying logical systems thinking to solve real-world logistics problems.
             </p>
             <p>
-              I like building practical things that people can actually use — 
-              not just projects that sit in a folder. Currently learning and growing 
-              as a developer, one project at a time.
+              From creating financial OS tools (ValarchiX) to smart Chrome Extensions (Marakadhey) and PWA budget travel planners (Sikkanam), I focus on shipping practical, privacy-first software that solves real user challenges.
             </p>
 
             <div className="about-interests">
-              {interests.map((interest, i) => (
+              {[
+                { label: 'Reading Mutual Funds Factsheet', icon: '📊' },
+                { label: 'Exploring New Places', icon: '✈️' },
+                { label: 'Web Development', icon: '🌐' },
+                { label: 'Product Design & PWAs', icon: '📱' },
+              ].map((interest, i) => (
                 <motion.span
                   key={interest.label}
                   className="about-interest-tag"
@@ -85,10 +88,10 @@ export default function About({ onOpenResume }: AboutProps) {
             transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] as const }}
           >
             {[
-              { value: '3', label: 'Products Shipped' },
-              { value: '🚀', label: 'Product Hunt Launch' },
-              { value: '✅', label: 'Chrome Store Published' },
-              { value: '🎓', label: 'ECE @ VIT Chennai' },
+              { value: '7.53', label: 'VIT Chennai CGPA' },
+              { value: '90.2%', label: 'HSC Academic Record' },
+              { value: 'IITM BS', label: 'Foundation Level 1' },
+              { value: 'CSC Cert', label: 'C, C++, Python, Java' },
             ].map((stat, i) => (
               <motion.div
                 key={stat.label}

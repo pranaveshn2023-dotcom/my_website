@@ -38,7 +38,7 @@ export default function Contact({ onOpenResume }: ContactProps) {
               <FileText size={16} />
               View Resume (PDF)
             </button>
-            <a href="mailto:pranaveshnandakumar@gmail.com" className="contact-link" id="contact-email">
+            <a href="mailto:pranavesh.n2023@vitstudent.ac.in" className="contact-link" id="contact-email">
               <Mail size={16} />
               Email Me
             </a>

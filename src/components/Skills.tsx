@@ -7,25 +7,25 @@ const skillCategories = [
     title: 'Frontend',
     icon: <Code2 size={20} />,
     iconClass: 'frontend',
-    skills: ['React', 'TypeScript', 'JavaScript', 'Tailwind CSS'],
+    skills: ['ReactJS', 'TypeScript', 'Tailwind CSS', 'PWA Design'],
   },
   {
     title: 'Backend',
     icon: <Server size={20} />,
     iconClass: 'backend',
-    skills: ['Node.js', 'Express.js', 'MongoDB'],
+    skills: ['MERN Stack', 'Node.js', 'Express.js', 'MongoDB'],
   },
   {
-    title: 'AI & Data',
-    icon: <Brain size={20} />,
-    iconClass: 'ai',
-    skills: ['RAG', 'LLM Integration', 'Prompt Engineering'],
-  },
-  {
-    title: 'Engineering',
+    title: 'Languages',
     icon: <Cpu size={20} />,
     iconClass: 'engineering',
-    skills: ['MATLAB', 'DSP', 'Python'],
+    skills: ['Python', 'C', 'C++', 'Java'],
+  },
+  {
+    title: 'Systems & Tools',
+    icon: <Brain size={20} />,
+    iconClass: 'ai',
+    skills: ['Logical Systems Thinking', 'Manifest V3', 'OSRM Engine', 'LLM Orchestration'],
   },
 ]
 

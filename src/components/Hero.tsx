@@ -54,15 +54,15 @@ export default function Hero({ onOpenResume }: HeroProps) {
         </motion.h1>
 
         <motion.p variants={item} className="hero-tagline">
-          Student <span>•</span> Builder <span>•</span> Developer
+          BTech ECE <span>•</span> Product Development <span>•</span> Full Stack PWAs
         </motion.p>
 
         <motion.p variants={item} className="hero-description">
-          I build products that solve real-world problems.
+          Applying logical systems thinking to solve real-world logistics problems.
         </motion.p>
 
         <motion.p variants={item} className="hero-description-sub">
-          Creator of <span className="highlight">valarchiX</span>, <span className="highlight">Sikkanam</span> &{' '}
+          Creator of <span className="highlight">ValarchiX</span>, <span className="highlight">Sikkanam</span> &{' '}
           <span className="highlight">Marakadhey</span>
         </motion.p>
 
@@ -91,7 +91,7 @@ export default function Hero({ onOpenResume }: HeroProps) {
           <a href="https://www.producthunt.com/products/sikkanam" target="_blank" rel="noopener noreferrer" aria-label="Product Hunt" id="social-producthunt">
             <ProductHuntIcon />
           </a>
-          <a href="mailto:pranaveshnandakumar@gmail.com" aria-label="Email" id="social-email">
+          <a href="mailto:pranavesh.n2023@vitstudent.ac.in" aria-label="Email" id="social-email">
             <Mail size={18} />
           </a>
         </motion.div>

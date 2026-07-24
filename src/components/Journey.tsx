@@ -3,20 +3,20 @@ import { motion, useInView } from 'framer-motion'
 
 const timelineData = [
   {
-    year: '2024',
-    text: 'Started exploring web development and building my first projects.',
+    year: '2023',
+    text: 'Completed HSC at Shree Niketan Patasala (90.2%) and started BTech ECE at VIT Chennai.',
   },
   {
     year: '2025',
-    text: 'Got into AI and travel tech. Started building Sikkanam and Marakadhey.',
+    text: 'Designed and shipped Sikkanam, a privacy-first travel PWA with custom OSRM mapping and AI itinerary orchestration.',
   },
   {
     year: '2026',
-    text: 'Launched valarchiX (Operating System for Financial Knowledge), Sikkanam on Product Hunt, and Marakadhey on the Chrome Web Store. Three live products shipped.',
+    text: 'Published Marakadhey Chrome Extension on Chrome Web Store and launched ValarchiX personal finance learning platform featuring Valarchi Vaathi AI tutor.',
   },
   {
-    year: 'Next',
-    text: 'Keep building. Keep shipping. Keep learning.',
+    year: 'Present',
+    text: 'Applying logical systems thinking to build high-performance PWAs and full stack products.',
   },
 ]
 

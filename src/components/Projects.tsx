@@ -5,15 +5,15 @@ import { ExternalLink, Rocket } from 'lucide-react'
 const projects = [
   {
     title: 'ValarchiX',
-    tag: 'OS for Financial Knowledge',
+    tag: '06/2026 – Present • Personal Finance Platform',
     tagClass: 'project-tag-valarchix',
     description:
-      'An interactive, educational platform designed to build deep financial knowledge. Empowering users to evaluate business models, assess mutual funds, calculate compounding, and compare tax regimes through dynamic data models.',
+      'A React, TypeScript, and Tailwind CSS-based personal finance learning platform featuring portfolio strategy simulations, mutual fund analyzers, retirement calculators, inflation-adjusted financial tools, and Valarchi Vaathi, an AI-powered finance tutor. Promotes evidence-based investing while keeping all user data local and private.',
     features: [
-      'AMFI NAV Sourcing & Screener',
-      'Broker Statement Parser (PDF/Excel)',
-      'Personal Finance Calculators',
-      'Launched on Product Hunt',
+      'Portfolio Strategy Simulations',
+      'Mutual Fund & Retirement Analyzers',
+      'Valarchi Vaathi AI Tutor',
+      'Privacy-First Local Data Storage',
     ],
     buttons: [
       { label: 'Visit ValarchiX', href: 'https://valarchix.vercel.app', icon: 'external' },
@@ -23,17 +23,34 @@ const projects = [
     logo: '/valarchix-logo.png',
   },
   {
+    title: 'Marakadhey',
+    tag: "2026 – Present • Chrome Extension",
+    tagClass: 'project-tag-marakadhey',
+    description:
+      "A live Google Chrome extension that helps users save important webpages and sets automated reminders so they never miss deadlines. Built using JavaScript and Chrome's Manifest V3 architecture, syncing browser notifications with Google Calendar.",
+    features: [
+      'Manifest V3 Architecture',
+      'Google Calendar Notification Sync',
+      'Automated Deadline Reminders',
+      'Chrome Web Store Published',
+    ],
+    buttons: [
+      { label: 'Chrome Web Store', href: 'https://chromewebstore.google.com/detail/marakadhey/inidbaohifkncdjnondbkljhoogkhnce', icon: 'external' },
+    ],
+    gradient: 'linear-gradient(135deg, rgba(168, 85, 247, 0.12) 0%, rgba(139, 92, 246, 0.06) 100%)',
+    logo: '/marakadhey-logo.jpg',
+  },
+  {
     title: 'Sikkanam',
-    tag: 'AI Travel Planner',
+    tag: '2025 – Present • TN Budget Travel Planner PWA',
     tagClass: 'project-tag-sikkanam',
     description:
-      'An AI-powered Tamil Nadu travel planning platform that provides intelligent itineraries, route intelligence, hotel recommendations, budget transparency, railway journey assistance, and travel insights.',
+      'A privacy-first full stack travel PWA for 80+ destinations built with React, TypeScript, and Tailwind CSS. Features a custom OSRM mapping engine with dynamic 1.25x to 1.40x traffic & terrain scaling, TNSTC/IRCTC transit fare pipelines, Google Gemini & Groq API orchestration, and 100 SEO / 96 Accessibility Lighthouse scores.',
     features: [
-      'AI Trip Planning',
-      'Budget Intelligence',
-      'Route Verification',
-      'Hotel Recommendations',
-      'Launched on Product Hunt',
+      'Custom OSRM Traffic & Terrain Engine',
+      'TNSTC & IRCTC Transit Fare Estimation',
+      'Google Gemini & Groq API Orchestration',
+      '100 SEO & 96 Accessibility Lighthouse Benchmark',
     ],
     buttons: [
       { label: 'Visit Sikkanam', href: 'https://sikkanam.vercel.app', icon: 'external' },
@@ -41,23 +58,6 @@ const projects = [
     ],
     gradient: 'linear-gradient(135deg, rgba(234, 88, 12, 0.12) 0%, rgba(249, 115, 22, 0.06) 100%)',
     logo: '/sikkanam-logo.jpg',
-  },
-  {
-    title: 'Marakadhey',
-    tag: 'Chrome Extension',
-    tagClass: 'project-tag-marakadhey',
-    description:
-      'A productivity-focused Chrome Extension that helps users capture opportunities, save reminders, and organize important tasks before they are forgotten.',
-    features: [
-      'Smart Reminders',
-      'Opportunity Tracking',
-      'Published on Chrome Web Store',
-    ],
-    buttons: [
-      { label: 'Chrome Web Store', href: 'https://chromewebstore.google.com/detail/marakadhey/inidbaohifkncdjnondbkljhoogkhnce', icon: 'external' },
-    ],
-    gradient: 'linear-gradient(135deg, rgba(168, 85, 247, 0.12) 0%, rgba(139, 92, 246, 0.06) 100%)',
-    logo: '/marakadhey-logo.jpg',
   },
 ]
 
