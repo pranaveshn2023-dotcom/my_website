@@ -23,7 +23,7 @@ const projectsData = [
       'Valarchi Vaathi: AI-powered interactive finance tutor',
       'Privacy-First Local Data Storage',
     ],
-    techStack: ['React', 'TypeScript', 'Tailwind CSS', 'Gemini API', 'Vercel'],
+    techStack: ['React', 'TypeScript', 'Tailwind CSS', 'GROQ API', 'Vercel'],
   },
   {
     id: 'sikkanam',
