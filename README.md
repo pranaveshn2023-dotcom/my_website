@@ -86,4 +86,4 @@ View or download my full resume from the website's About section, or access it d
 
 ---
 
-*Built with React, TypeScript, and Vite. Deployed via GitHub Pages.*
+*Built with React, TypeScript, and Vite. Deployed via vercel.*

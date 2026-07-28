@@ -1,69 +1,82 @@
-import { useRef } from 'react'
+import { useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { ExternalLink, Rocket } from 'lucide-react'
+import { ExternalLink, Rocket, CheckCircle2 } from 'lucide-react'
 
-const projects = [
+const projectsData = [
   {
-    title: 'ValarchiX',
-    tag: '06/2026 – Present • Personal Finance Platform',
-    tagClass: 'project-tag-valarchix',
-    description:
-      'A React, TypeScript, and Tailwind CSS-based personal finance learning platform featuring portfolio strategy simulations, mutual fund analyzers, retirement calculators, inflation-adjusted financial tools, and Valarchi Vaathi, an AI-powered finance tutor. Promotes evidence-based investing while keeping all user data local and private.',
+    id: 'valarchix',
+    name: 'ValarchiX',
+    category: 'Personal Finance Platform',
+    accent: '#10B981',
+    logo: '/valarchix-logo.png',
+    tagline: 'A React, TypeScript, and Tailwind CSS personal finance learning platform featuring portfolio strategy simulations, mutual fund analyzers, retirement calculators, inflation-adjusted financial tools, and Valarchi Vaathi, an AI-powered finance tutor. Promotes evidence-based investing while keeping all user data local and private.',
+    liveUrl: 'https://valarchix.vercel.app',
+    productHuntUrl: 'https://www.producthunt.com/products/valarchix',
+    metrics: [
+      { label: 'AI Tutor', value: 'Valarchi Vaathi' },
+      { label: 'Data Privacy', value: '100% Local' },
+      { label: 'Calculators', value: 'MF & Retirement' },
+    ],
     features: [
-      'Portfolio Strategy Simulations',
-      'Mutual Fund & Retirement Analyzers',
-      'Valarchi Vaathi AI Tutor',
+      'Portfolio Strategy & Asset Allocation Simulations',
+      'Mutual Fund & Inflation-Adjusted Retirement Analyzers',
+      'Valarchi Vaathi: AI-powered interactive finance tutor',
       'Privacy-First Local Data Storage',
     ],
-    buttons: [
-      { label: 'Visit ValarchiX', href: 'https://valarchix.vercel.app', icon: 'external' },
-      { label: 'Product Hunt', href: 'https://www.producthunt.com/products/valarchix', icon: 'rocket' },
-    ],
-    gradient: 'linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(5, 150, 105, 0.06) 100%)',
-    logo: '/valarchix-logo.png',
+    techStack: ['React', 'TypeScript', 'Tailwind CSS', 'Gemini API', 'Vercel'],
   },
   {
-    title: 'Marakadhey',
-    tag: "2026 – Present • Chrome Extension",
-    tagClass: 'project-tag-marakadhey',
-    description:
-      "A live Google Chrome extension that helps users save important webpages and sets automated reminders so they never miss deadlines. Built using JavaScript and Chrome's Manifest V3 architecture, syncing browser notifications with Google Calendar.",
-    features: [
-      'Manifest V3 Architecture',
-      'Google Calendar Notification Sync',
-      'Automated Deadline Reminders',
-      'Chrome Web Store Published',
+    id: 'sikkanam',
+    name: 'Sikkanam',
+    category: 'TN Budget Travel Planner PWA',
+    accent: '#EA580C',
+    logo: '/sikkanam-logo.jpg',
+    tagline: 'A privacy-first full stack travel PWA for 80+ destinations built with React, TypeScript, and Tailwind CSS. Features a custom OSRM mapping engine with dynamic 1.25x to 1.40x traffic & terrain scaling, TNSTC/IRCTC transit fare pipelines, Google Gemini & Groq API orchestration, and 100 SEO / 96 Accessibility Lighthouse scores.',
+    liveUrl: 'https://sikkanam.vercel.app',
+    productHuntUrl: 'https://www.producthunt.com/products/sikkanam',
+    metrics: [
+      { label: 'Destinations', value: '80+ TN Cities' },
+      { label: 'Lighthouse SEO', value: '100 Score' },
+      { label: 'Accessibility', value: '96 Score' },
     ],
-    buttons: [
-      { label: 'Chrome Web Store', href: 'https://chromewebstore.google.com/detail/marakadhey/inidbaohifkncdjnondbkljhoogkhnce', icon: 'external' },
-    ],
-    gradient: 'linear-gradient(135deg, rgba(168, 85, 247, 0.12) 0%, rgba(139, 92, 246, 0.06) 100%)',
-    logo: '/marakadhey-logo.jpg',
-  },
-  {
-    title: 'Sikkanam',
-    tag: '2025 – Present • TN Budget Travel Planner PWA',
-    tagClass: 'project-tag-sikkanam',
-    description:
-      'A privacy-first full stack travel PWA for 80+ destinations built with React, TypeScript, and Tailwind CSS. Features a custom OSRM mapping engine with dynamic 1.25x to 1.40x traffic & terrain scaling, TNSTC/IRCTC transit fare pipelines, Google Gemini & Groq API orchestration, and 100 SEO / 96 Accessibility Lighthouse scores.',
     features: [
       'Custom OSRM Traffic & Terrain Engine',
       'TNSTC & IRCTC Transit Fare Estimation',
       'Google Gemini & Groq API Orchestration',
       '100 SEO & 96 Accessibility Lighthouse Benchmark',
     ],
-    buttons: [
-      { label: 'Visit Sikkanam', href: 'https://sikkanam.vercel.app', icon: 'external' },
-      { label: 'Product Hunt', href: 'https://www.producthunt.com/products/sikkanam', icon: 'rocket' },
+    techStack: ['React', 'TypeScript', 'OSRM Engine', 'Groq LLaMA', 'Gemini AI'],
+  },
+  {
+    id: 'marakadhey',
+    name: 'Marakadhey',
+    category: 'Chrome Web Store Extension',
+    accent: '#A855F7',
+    logo: '/marakadhey-logo.jpg',
+    tagline: "A live Google Chrome extension that helps users save important webpages and sets automated reminders so they never miss deadlines. Built using JavaScript and Chrome's Manifest V3 architecture, syncing browser notifications with Google Calendar.",
+    liveUrl: 'https://chromewebstore.google.com/detail/marakadhey/inidbaohifkncdjnondbkljhoogkhnce',
+    productHuntUrl: null,
+    metrics: [
+      { label: 'Store Status', value: 'Published Live' },
+      { label: 'Architecture', value: 'Manifest V3' },
+      { label: 'Integration', value: 'Google Calendar' },
     ],
-    gradient: 'linear-gradient(135deg, rgba(234, 88, 12, 0.12) 0%, rgba(249, 115, 22, 0.06) 100%)',
-    logo: '/sikkanam-logo.jpg',
+    features: [
+      'Manifest V3 Architecture',
+      'Google Calendar Notification Sync',
+      'Automated Deadline Reminders',
+      'Chrome Web Store Published',
+    ],
+    techStack: ['JavaScript', 'Chrome Extension API', 'Manifest V3', 'Google Calendar API'],
   },
 ]
 
 export default function Projects() {
+  const [selectedId, setSelectedId] = useState<string>(projectsData[0].id)
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-100px' })
+
+  const current = projectsData.find((p) => p.id === selectedId) || projectsData[0]
 
   return (
     <section className="section" id="projects">
@@ -82,69 +95,109 @@ export default function Projects() {
           </p>
         </motion.div>
 
-        <div className="projects-grid">
-          {projects.map((project, i) => (
-            <motion.div
-              key={project.title}
-              className="project-card"
-              initial={{ opacity: 0, y: 60 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.2 + i * 0.15, ease: [0.16, 1, 0.3, 1] as const }}
+        {/* Product Selector Pills */}
+        <div className="playground-tabs">
+          {projectsData.map((p) => (
+            <button
+              key={p.id}
+              className={`playground-tab ${p.id === selectedId ? 'active' : ''}`}
+              onClick={() => setSelectedId(p.id)}
+              style={{
+                borderColor: p.id === selectedId ? p.accent : 'var(--border)',
+                color: p.id === selectedId ? 'var(--text-primary)' : 'var(--text-secondary)',
+              }}
             >
-              <div className="project-card-inner">
-                <div className="project-card-content">
-                  <span className={`project-tag ${project.tagClass}`}>
-                    {project.tag}
-                  </span>
-                  <h3>{project.title}</h3>
-                  <p className="project-card-description">{project.description}</p>
-
-                  <div className="project-features">
-                    {project.features.map((feat) => (
-                      <span key={feat} className="project-feature">
-                        <span className="project-feature-icon">✦</span>
-                        {feat}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="project-buttons">
-                    {project.buttons.map((btn) => (
-                      <a
-                        key={btn.label}
-                        href={btn.href}
-                        className="btn btn-secondary btn-sm"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        id={`btn-${project.title.toLowerCase()}-${btn.label.toLowerCase().replace(/\s/g, '-')}`}
-                      >
-                        {btn.icon === 'rocket' ? <Rocket size={14} /> : <ExternalLink size={14} />}
-                        {btn.label}
-                      </a>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="project-card-visual">
-                  <div className="project-card-visual-bg" style={{ background: project.gradient }} />
-                  <div className="project-card-visual-content">
-                    <img
-                      src={project.logo}
-                      alt={`${project.title} logo`}
-                      className="project-logo-img"
-                    />
-                    <span style={{ fontSize: '20px', fontWeight: 700, letterSpacing: '-0.02em', color: 'var(--text-primary)' }}>
-                      {project.title}
-                    </span>
-                    <span style={{ fontSize: '13px', color: 'var(--text-tertiary)', fontFamily: 'var(--font-mono)' }}>
-                      {project.tag}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
+              <img src={p.logo} alt={p.name} className="playground-tab-logo" />
+              <span>{p.name}</span>
+            </button>
           ))}
         </div>
+
+        {/* Product Inspector Container */}
+        <motion.div
+          key={current.id}
+          className="playground-card"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] as const }}
+          style={{ borderColor: `${current.accent}40` }}
+        >
+          <div className="playground-card-header">
+            <div className="playground-title-group">
+              <img src={current.logo} alt={current.name} className="playground-header-logo" />
+              <div>
+                <span className="playground-category" style={{ color: current.accent }}>
+                  {current.category}
+                </span>
+                <h3 className="playground-name">{current.name}</h3>
+              </div>
+            </div>
+
+            <div className="playground-actions">
+              <a
+                href={current.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-primary btn-sm"
+                id={`btn-visit-${current.id}`}
+              >
+                <ExternalLink size={14} />
+                Visit Product
+              </a>
+              {current.productHuntUrl && (
+                <a
+                  href={current.productHuntUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-secondary btn-sm"
+                  id={`btn-ph-${current.id}`}
+                >
+                  <Rocket size={14} />
+                  Product Hunt
+                </a>
+              )}
+            </div>
+          </div>
+
+          <p className="playground-tagline">{current.tagline}</p>
+
+          {/* Metrics Grid */}
+          <div className="playground-metrics-grid">
+            {current.metrics.map((m) => (
+              <div key={m.label} className="playground-metric-card" style={{ borderColor: `${current.accent}25` }}>
+                <span className="playground-metric-val" style={{ color: current.accent }}>
+                  {m.value}
+                </span>
+                <span className="playground-metric-lbl">{m.label}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Feature Breakdown */}
+          <div className="playground-features-box">
+            <h4>Key Features & Highlights:</h4>
+            <div className="playground-features-list">
+              {current.features.map((feat) => (
+                <div key={feat} className="playground-feature-item">
+                  <CheckCircle2 size={16} style={{ color: current.accent }} />
+                  <span>{feat}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Tech Stack Pills */}
+          <div className="playground-tech-row">
+            <span className="playground-tech-label">Built with:</span>
+            <div className="playground-tech-tags">
+              {current.techStack.map((tech) => (
+                <span key={tech} className="playground-tech-pill">
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   )
