@@ -15,6 +15,10 @@ const timelineData = [
     text: 'Published Marakadhey Chrome Extension on Chrome Web Store and launched ValarchiX personal finance learning platform featuring Valarchi Vaathi AI tutor.',
   },
   {
+    year: '2026',
+    text: 'Completed a Student Internship at Danfoss Industries Pvt Ltd, building Power Apps timesheet systems and Power BI dashboards.',
+  },
+  {
     year: 'Present',
     text: 'Applying logical systems thinking to build high-performance PWAs and full stack products.',
   },
