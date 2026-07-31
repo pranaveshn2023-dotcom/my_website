@@ -44,7 +44,7 @@ A personal finance learning platform featuring portfolio strategy simulations, m
 
 A live Google Chrome extension that helps users save important webpages and receive automated reminders before deadlines. Syncs browser notifications with Google Calendar.
 
-- **Chrome Web Store:** [Marakadhey](https://chromewebstore.google.com/detail/marakadhey/inidbaohifkncdjnondbkljhoogkhnce)
+- **Chrome Web Store:** [Marakadhey-Never Miss Opportunities](https://chromewebstore.google.com/detail/marakadhey/inidbaohifkncdjnondbkljhoogkhnce)
 
 ### Sikkanam — Tamil Nadu Budget Travel Planner
 *2025 – Present | React, TypeScript, Tailwind CSS, Custom OSRM*

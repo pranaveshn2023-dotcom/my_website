@@ -73,7 +73,7 @@ export default function Hero({ onOpenResume }: HeroProps) {
 
             <motion.p variants={item} className="hero-description-sub">
               Creator of <span className="highlight">ValarchiX</span>, <span className="highlight">Sikkanam</span> &{' '}
-              <span className="highlight">Marakadhey</span>
+              <span className="highlight">Marakadhey-Never Miss Opportunities</span>
             </motion.p>
 
             {/* Quick Stats Grid */}
