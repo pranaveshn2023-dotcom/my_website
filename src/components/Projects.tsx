@@ -49,7 +49,7 @@ const projectsData = [
   },
   {
     id: 'marakadhey',
-    name: 'Marakadhey-Never Miss Opportunities',
+    name: 'Marakadhey',
     category: 'Chrome Web Store Extension',
     accent: '#A855F7',
     logo: '/marakadhey-logo.jpg',
