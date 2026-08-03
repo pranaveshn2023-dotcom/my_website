@@ -7,7 +7,6 @@ BTech(ECE) student at VIT Chennai, focused on Product Development and full-stack
 I'm an Electronics and Communication Engineering student at Vellore Institute of Technology (VIT Chennai) with a passion for building practical, real-world products. My work spans full-stack web development, progressive web apps, and AI-integrated platforms — always with a privacy-first, user-centric approach.
 
 - **Email:** pranavesh.n2023@vitstudent.ac.in
-- **Phone:** 6374161918
 - **Location:** Chennai, Tamil Nadu
 - **Portfolio:** [pranaveshn.github.io](https://github.com/pranaveshn2023-dotcom/my_website)
 - **LinkedIn:** [in/pranavesh-n](https://linkedin.com/in/pranavesh-n)

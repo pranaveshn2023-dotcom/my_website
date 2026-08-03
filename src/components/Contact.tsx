@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Mail, Phone, MessageCircle, FileText } from 'lucide-react'
+import { Mail, FileText } from 'lucide-react'
 
 const LinkedInIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -41,14 +41,6 @@ export default function Contact({ onOpenResume }: ContactProps) {
             <a href="mailto:pranavesh.n2023@vitstudent.ac.in" className="contact-link" id="contact-email">
               <Mail size={16} />
               Email Me
-            </a>
-            <a href="tel:+916374161918" className="contact-link" id="contact-phone">
-              <Phone size={16} />
-              +91 6374161918
-            </a>
-            <a href="https://wa.me/916374161918" className="contact-link" target="_blank" rel="noopener noreferrer" id="contact-whatsapp">
-              <MessageCircle size={16} />
-              WhatsApp
             </a>
             <a href="https://www.linkedin.com/in/pranaveshn" className="contact-link" target="_blank" rel="noopener noreferrer" id="contact-linkedin">
               <LinkedInIcon />
