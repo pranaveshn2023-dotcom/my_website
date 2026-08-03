@@ -117,7 +117,7 @@ export default function Hero({ onOpenResume }: HeroProps) {
               <a href="https://www.producthunt.com/products/sikkanam" target="_blank" rel="noopener noreferrer" aria-label="Product Hunt" id="social-producthunt">
                 <ProductHuntIcon />
               </a>
-              <a href="mailto:pranavesh.n2023@vitstudent.ac.in" aria-label="Email" id="social-email">
+              <a href="mailto:pranaveshnandakumar@gmail.com" aria-label="Email" id="social-email">
                 <Mail size={18} />
               </a>
             </motion.div>
