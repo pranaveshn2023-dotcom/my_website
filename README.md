@@ -18,7 +18,7 @@ I'm an Electronics and Communication Engineering student at Vellore Institute of
 
 | Degree | Institution | Year | Details |
 |--------|-------------|------|---------|
-| **BTech (ECE)** | Vellore Institute of Technology, Chennai | 08/2023 – 04/2027 | CGPA: 7.53 |
+| **BTech (ECE)** | Vellore Institute of Technology, Chennai | 08/2023 – 04/2027 | CGPA: 7.71 |
 | **Higher Secondary (HSC)** | Shree Niketan Patasala, Thiruvallur | 04/2014 – 03/2023 | 90.2% |
 
 ## 💼 Professional Experience
