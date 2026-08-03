@@ -26,6 +26,29 @@ const projectsData = [
     techStack: ['React', 'TypeScript', 'Tailwind CSS', 'GROQ API', 'Vercel'],
   },
   {
+    id: 'marakadhey',
+    name: 'Marakadhey-Never Miss Opportunities',
+    tabLabel: 'Marakadhey',
+    category: 'Chrome Web Store Extension',
+    accent: '#A855F7',
+    logo: '/marakadhey-logo.jpg',
+    tagline: "A live Google Chrome extension that helps users save important webpages and sets automated reminders so they never miss deadlines. Built using JavaScript and Chrome's Manifest V3 architecture, syncing browser notifications with Google Calendar.",
+    liveUrl: 'https://chromewebstore.google.com/detail/marakadhey/inidbaohifkncdjnondbkljhoogkhnce',
+    productHuntUrl: 'https://www.producthunt.com/products/marakadhey/marakadhey/launch-day?utm_source=my-products',
+    metrics: [
+      { label: 'Store Status', value: 'Published Live' },
+      { label: 'Architecture', value: 'Manifest V3' },
+      { label: 'Integration', value: 'Google Calendar' },
+    ],
+    features: [
+      'Manifest V3 Architecture',
+      'Google Calendar Notification Sync',
+      'Automated Deadline Reminders',
+      'Chrome Web Store Published',
+    ],
+    techStack: ['JavaScript', 'Chrome Extension API', 'Manifest V3', 'Google Calendar API'],
+  },
+  {
     id: 'sikkanam',
     name: 'Sikkanam',
     category: 'TN Budget Travel Planner PWA',
@@ -46,28 +69,6 @@ const projectsData = [
       '100 SEO & 96 Accessibility Lighthouse Benchmark',
     ],
     techStack: ['React', 'TypeScript', 'OSRM Engine', 'Groq LLaMA', 'Gemini AI'],
-  },
-  {
-    id: 'marakadhey',
-    name: 'Marakadhey-Never Miss Opportunities',
-    category: 'Chrome Web Store Extension',
-    accent: '#A855F7',
-    logo: '/marakadhey-logo.jpg',
-    tagline: "A live Google Chrome extension that helps users save important webpages and sets automated reminders so they never miss deadlines. Built using JavaScript and Chrome's Manifest V3 architecture, syncing browser notifications with Google Calendar.",
-    liveUrl: 'https://chromewebstore.google.com/detail/marakadhey/inidbaohifkncdjnondbkljhoogkhnce',
-    productHuntUrl: null,
-    metrics: [
-      { label: 'Store Status', value: 'Published Live' },
-      { label: 'Architecture', value: 'Manifest V3' },
-      { label: 'Integration', value: 'Google Calendar' },
-    ],
-    features: [
-      'Manifest V3 Architecture',
-      'Google Calendar Notification Sync',
-      'Automated Deadline Reminders',
-      'Chrome Web Store Published',
-    ],
-    techStack: ['JavaScript', 'Chrome Extension API', 'Manifest V3', 'Google Calendar API'],
   },
 ]
 
@@ -107,8 +108,8 @@ export default function Projects() {
                 color: p.id === selectedId ? 'var(--text-primary)' : 'var(--text-secondary)',
               }}
             >
-              <img src={p.logo} alt={p.name} className="playground-tab-logo" />
-              <span>{p.name}</span>
+              <img src={p.logo} alt={p.tabLabel || p.name} className="playground-tab-logo" />
+              <span>{p.tabLabel || p.name}</span>
             </button>
           ))}
         </div>
