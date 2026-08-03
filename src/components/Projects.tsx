@@ -91,7 +91,7 @@ export default function Projects() {
           <p className="section-label">Projects</p>
           <h2 className="section-title">What I've Built</h2>
           <p className="section-subtitle">
-            Products shipped and used by real people.
+            Products shipped and available to use by public with 100% free
           </p>
         </motion.div>
 
