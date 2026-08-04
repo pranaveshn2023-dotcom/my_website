@@ -6,8 +6,7 @@ import Projects from './components/Projects'
 import Skills from './components/Skills'
 import Experience from './components/Experience'
 import Journey from './components/Journey'
-import CodingProfiles from './components/CodingProfiles'
-import Articles from './components/Articles'
+import Achievements from './components/Achievements'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import ResumeModal from './components/ResumeModal'
@@ -39,9 +38,7 @@ export default function App() {
         <div className="section-divider" />
         <Journey />
         <div className="section-divider" />
-        <CodingProfiles />
-        <div className="section-divider" />
-        <Articles />
+        <Achievements />
         <div className="section-divider" />
         <Contact onOpenResume={handleOpenResume} />
       </main>

@@ -1,12 +1,13 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import Card3D from './3d/Card3D'
 
 const achievements = [
-  { emoji: '🚀', text: 'Product Hunt Launch' },
-  { emoji: '✅', text: 'Chrome Web Store Published' },
-  { emoji: '🏗️', text: '3 Live Products Built' },
-  { emoji: '🎓', text: 'VIT Chennai Student' },
-  { emoji: '🤖', text: 'AI Travel Platform Creator' },
+  { emoji: '🚀', text: 'Product Hunt Launch', accent: '#da552f' },
+  { emoji: '✅', text: 'Chrome Web Store Published', accent: '#a855f7' },
+  { emoji: '🏗️', text: '3 Live Products Built', accent: '#22d3ee' },
+  { emoji: '🎓', text: 'VIT Chennai Student', accent: '#10b981' },
+  { emoji: '🤖', text: 'AI Travel Platform Creator', accent: '#ea580c' },
 ]
 
 export default function Achievements() {
@@ -34,7 +35,6 @@ export default function Achievements() {
           {achievements.map((item, i) => (
             <motion.div
               key={item.text}
-              className="achievement-card"
               initial={{ opacity: 0, y: 30, scale: 0.95 }}
               animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
               transition={{
@@ -43,8 +43,12 @@ export default function Achievements() {
                 ease: [0.16, 1, 0.3, 1] as const,
               }}
             >
-              <span className="achievement-emoji">{item.emoji}</span>
-              <span className="achievement-text">{item.text}</span>
+              <Card3D glowColor={`${item.accent}35`}>
+                <div className="achievement-card">
+                  <span className="achievement-emoji">{item.emoji}</span>
+                  <span className="achievement-text">{item.text}</span>
+                </div>
+              </Card3D>
             </motion.div>
           ))}
         </div>

@@ -5,48 +5,32 @@ import Card3D from './3d/Card3D'
 
 const skillCategories = [
   {
-    title: 'Frontend & PWA',
+    title: 'Frontend',
     icon: <Code2 size={20} />,
+    iconClass: 'frontend',
     accent: '#22d3ee',
-    skills: [
-      { name: 'ReactJS', level: 92 },
-      { name: 'TypeScript', level: 90 },
-      { name: 'Tailwind CSS', level: 95 },
-      { name: 'PWA & Service Workers', level: 88 },
-    ],
+    skills: ['ReactJS', 'TypeScript', 'Tailwind CSS', 'PWA Design'],
   },
   {
-    title: 'Backend & Databases',
+    title: 'Backend',
     icon: <Server size={20} />,
+    iconClass: 'backend',
     accent: '#a855f7',
-    skills: [
-      { name: 'Node.js & Express', level: 85 },
-      { name: 'MongoDB & MERN', level: 84 },
-      { name: 'REST APIs', level: 90 },
-      { name: 'Vite & Build Tools', level: 88 },
-    ],
+    skills: ['MERN Stack', 'Node.js', 'Express.js', 'MongoDB'],
   },
   {
-    title: 'Languages & Engineering',
+    title: 'Languages',
     icon: <Cpu size={20} />,
+    iconClass: 'engineering',
     accent: '#10b981',
-    skills: [
-      { name: 'Python', level: 88 },
-      { name: 'C / C++', level: 82 },
-      { name: 'Java', level: 80 },
-      { name: 'ECE Systems', level: 85 },
-    ],
+    skills: ['Python', 'C', 'C++', 'Java'],
   },
   {
-    title: 'Systems & Architecture',
+    title: 'Systems & Tools',
     icon: <Brain size={20} />,
+    iconClass: 'ai',
     accent: '#f59e0b',
-    skills: [
-      { name: 'Systems Thinking', level: 92 },
-      { name: 'Chrome Manifest V3', level: 90 },
-      { name: 'OSRM Route Engine', level: 86 },
-      { name: 'LLM Orchestration', level: 88 },
-    ],
+    skills: ['Logical Systems Thinking', 'Manifest V3', 'OSRM Engine', 'LLM Orchestration'],
   },
 ]
 
@@ -64,10 +48,10 @@ export default function Skills() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] as const }}
         >
-          <p className="section-label">Skills & Technical Proficiency</p>
-          <h2 className="section-title">Tech Stack & Mastery</h2>
+          <p className="section-label">Skills</p>
+          <h2 className="section-title">Tech Stack</h2>
           <p className="section-subtitle">
-            Tools, programming languages, and architecture patterns I build with daily.
+            Tools and technologies I work with daily.
           </p>
         </motion.div>
 
@@ -79,38 +63,21 @@ export default function Skills() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{
                 duration: 0.6,
-                delay: 0.15 + i * 0.1,
+                delay: 0.2 + i * 0.1,
                 ease: [0.16, 1, 0.3, 1] as const,
               }}
             >
               <Card3D glowColor={`${cat.accent}35`}>
-                <div className="skill-category-card" style={{ borderColor: `${cat.accent}30` }}>
-                  <div className="skill-category-header">
-                    <div className="skill-icon-wrapper" style={{ color: cat.accent, backgroundColor: `${cat.accent}15` }}>
-                      {cat.icon}
-                    </div>
-                    <h4>{cat.title}</h4>
+                <div className="skill-category">
+                  <div className={`skill-category-icon ${cat.iconClass}`} style={{ color: cat.accent, backgroundColor: `${cat.accent}15` }}>
+                    {cat.icon}
                   </div>
-
-                  <div className="skill-bars-list">
+                  <h4>{cat.title}</h4>
+                  <div className="skill-list">
                     {cat.skills.map((skill) => (
-                      <div key={skill.name} className="skill-bar-item">
-                        <div className="skill-bar-info">
-                          <span className="skill-name">{skill.name}</span>
-                          <span className="skill-percentage" style={{ color: cat.accent }}>
-                            {skill.level}%
-                          </span>
-                        </div>
-                        <div className="skill-bar-track">
-                          <motion.div
-                            className="skill-bar-fill"
-                            style={{ backgroundColor: cat.accent }}
-                            initial={{ width: 0 }}
-                            animate={inView ? { width: `${skill.level}%` } : { width: 0 }}
-                            transition={{ duration: 1.2, delay: 0.3 + i * 0.1, ease: 'easeOut' }}
-                          />
-                        </div>
-                      </div>
+                      <span key={skill} className="skill-item">
+                        {skill}
+                      </span>
                     ))}
                   </div>
                 </div>
