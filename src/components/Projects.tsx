@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { ExternalLink, Rocket, CheckCircle2 } from 'lucide-react'
+import Card3D from './3d/Card3D'
 
 const projectsData = [
   {
@@ -89,7 +90,7 @@ export default function Projects() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] as const }}
         >
-          <p className="section-label">Projects</p>
+          <p className="section-label">Featured Projects</p>
           <h2 className="section-title">What I've Built</h2>
           <p className="section-subtitle">
             Products shipped and available to use by public with 100% free
@@ -114,90 +115,92 @@ export default function Projects() {
           ))}
         </div>
 
-        {/* Product Inspector Container */}
+        {/* Product Inspector Container with 3D Physics */}
         <motion.div
           key={current.id}
-          className="playground-card"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] as const }}
-          style={{ borderColor: `${current.accent}40` }}
         >
-          <div className="playground-card-header">
-            <div className="playground-title-group">
-              <img src={current.logo} alt={current.name} className="playground-header-logo" />
-              <div>
-                <span className="playground-category" style={{ color: current.accent }}>
-                  {current.category}
-                </span>
-                <h3 className="playground-name">{current.name}</h3>
-              </div>
-            </div>
-
-            <div className="playground-actions">
-              <a
-                href={current.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-primary btn-sm"
-                id={`btn-visit-${current.id}`}
-              >
-                <ExternalLink size={14} />
-                Visit Product
-              </a>
-              {current.productHuntUrl && (
-                <a
-                  href={current.productHuntUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-secondary btn-sm"
-                  id={`btn-ph-${current.id}`}
-                >
-                  <Rocket size={14} />
-                  Product Hunt
-                </a>
-              )}
-            </div>
-          </div>
-
-          <p className="playground-tagline">{current.tagline}</p>
-
-          {/* Metrics Grid */}
-          <div className="playground-metrics-grid">
-            {current.metrics.map((m) => (
-              <div key={m.label} className="playground-metric-card" style={{ borderColor: `${current.accent}25` }}>
-                <span className="playground-metric-val" style={{ color: current.accent }}>
-                  {m.value}
-                </span>
-                <span className="playground-metric-lbl">{m.label}</span>
-              </div>
-            ))}
-          </div>
-
-          {/* Feature Breakdown */}
-          <div className="playground-features-box">
-            <h4>Key Features & Highlights:</h4>
-            <div className="playground-features-list">
-              {current.features.map((feat) => (
-                <div key={feat} className="playground-feature-item">
-                  <CheckCircle2 size={16} style={{ color: current.accent }} />
-                  <span>{feat}</span>
+          <Card3D glowColor={`${current.accent}40`}>
+            <div className="playground-card" style={{ borderColor: `${current.accent}50` }}>
+              <div className="playground-card-header">
+                <div className="playground-title-group">
+                  <img src={current.logo} alt={current.name} className="playground-header-logo" />
+                  <div>
+                    <span className="playground-category" style={{ color: current.accent }}>
+                      {current.category}
+                    </span>
+                    <h3 className="playground-name">{current.name}</h3>
+                  </div>
                 </div>
-              ))}
-            </div>
-          </div>
 
-          {/* Tech Stack Pills */}
-          <div className="playground-tech-row">
-            <span className="playground-tech-label">Built with:</span>
-            <div className="playground-tech-tags">
-              {current.techStack.map((tech) => (
-                <span key={tech} className="playground-tech-pill">
-                  {tech}
-                </span>
-              ))}
+                <div className="playground-actions">
+                  <a
+                    href={current.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-primary btn-sm"
+                    id={`btn-visit-${current.id}`}
+                  >
+                    <ExternalLink size={14} />
+                    Visit Product
+                  </a>
+                  {current.productHuntUrl && (
+                    <a
+                      href={current.productHuntUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-secondary btn-sm"
+                      id={`btn-ph-${current.id}`}
+                    >
+                      <Rocket size={14} />
+                      Product Hunt
+                    </a>
+                  )}
+                </div>
+              </div>
+
+              <p className="playground-tagline">{current.tagline}</p>
+
+              {/* Metrics Grid */}
+              <div className="playground-metrics-grid">
+                {current.metrics.map((m) => (
+                  <div key={m.label} className="playground-metric-card" style={{ borderColor: `${current.accent}25` }}>
+                    <span className="playground-metric-val" style={{ color: current.accent }}>
+                      {m.value}
+                    </span>
+                    <span className="playground-metric-lbl">{m.label}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Feature Breakdown */}
+              <div className="playground-features-box">
+                <h4>Key Features & Highlights:</h4>
+                <div className="playground-features-list">
+                  {current.features.map((feat) => (
+                    <div key={feat} className="playground-feature-item">
+                      <CheckCircle2 size={16} style={{ color: current.accent }} />
+                      <span>{feat}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Tech Stack Pills */}
+              <div className="playground-tech-row">
+                <span className="playground-tech-label">Built with:</span>
+                <div className="playground-tech-tags">
+                  {current.techStack.map((tech) => (
+                    <span key={tech} className="playground-tech-pill">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
-          </div>
+          </Card3D>
         </motion.div>
       </div>
     </section>
