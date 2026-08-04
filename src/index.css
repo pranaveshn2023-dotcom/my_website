@@ -425,6 +425,66 @@ ul, ol {
   font-weight: 500;
 }
 
+/* Railway Signal Box & Pilot Telemetry HUD */
+.railway-signal-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  background: rgba(11, 16, 32, 0.9);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  margin-bottom: 20px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.15);
+}
+
+.signal-aspect {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #10b981;
+  letter-spacing: 0.05em;
+}
+
+.aspect-light.green-glow {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 10px #10b981;
+  animation: aspect-pulse 1.5s infinite;
+}
+
+@keyframes aspect-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(0.8); }
+}
+
+.signal-divider {
+  width: 1px;
+  height: 16px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.telemetry-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.04em;
+}
+
+.stat-header-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 /* Hero Stats Grid */
 .hero-stats-grid {
   display: grid;

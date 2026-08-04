@@ -1,13 +1,5 @@
 import { useEffect, useRef } from 'react'
 
-interface Particle {
-  x: number
-  y: number
-  z: number
-  speed: number
-  color: string
-}
-
 export default function ParticlesCanvas() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
 
@@ -21,28 +13,13 @@ export default function ParticlesCanvas() {
     let width = (canvas.width = window.innerWidth)
     let height = (canvas.height = window.innerHeight)
 
-    const colors = ['#06b6d4', '#f59e0b', '#10b981', '#a855f7']
-    const particles: Particle[] = []
-    const particleCount = 140
-
-    for (let i = 0; i < particleCount; i++) {
-      particles.push({
-        x: (Math.random() - 0.5) * width * 2,
-        y: Math.random() * height,
-        z: Math.random() * width,
-        speed: Math.random() * 2 + 1.5,
-        color: colors[Math.floor(Math.random() * colors.length)],
-      })
-    }
-
-    const mouse = { x: width / 2, y: height / 2 }
-
     const handleResize = () => {
       if (!canvas) return
       width = canvas.width = window.innerWidth
       height = canvas.height = window.innerHeight
     }
 
+    const mouse = { x: width / 2, y: height / 2 }
     const handleMouseMove = (e: MouseEvent) => {
       mouse.x = e.clientX
       mouse.y = e.clientY
@@ -51,82 +28,148 @@ export default function ParticlesCanvas() {
     window.addEventListener('resize', handleResize)
     window.addEventListener('mousemove', handleMouseMove)
 
+    // Railway Speed Particles
+    const sparkCount = 100
+    const sparks = Array.from({ length: sparkCount }, () => ({
+      x: (Math.random() - 0.5) * width * 2,
+      y: Math.random() * height,
+      z: Math.random() * width,
+      speed: Math.random() * 4 + 2,
+      color: ['#06b6d4', '#f59e0b', '#10b981', '#ef4444', '#a855f7'][Math.floor(Math.random() * 5)],
+    }))
+
     let trackOffset = 0
 
     const render = () => {
-      ctx.fillStyle = 'rgba(7, 12, 24, 0.4)'
+      ctx.fillStyle = 'rgba(5, 8, 17, 0.45)'
       ctx.fillRect(0, 0, width, height)
 
-      // Perspective Railway Track Lines Background Effect
-      trackOffset = (trackOffset + 1.5) % 40
-      const centerX = width / 2 + (mouse.x - width / 2) * 0.05
-      const vanishY = height * 0.25
+      trackOffset = (trackOffset + 3.5) % 50
+
+      const vanishX = width / 2 + (mouse.x - width / 2) * 0.08
+      const vanishY = height * 0.28
 
       ctx.save()
-      ctx.strokeStyle = 'rgba(6, 182, 212, 0.12)'
-      ctx.lineWidth = 1.5
 
-      // Left Track Rail Line
+      // 1. Overhead Railway Catenary Power Wires
+      ctx.strokeStyle = 'rgba(34, 211, 238, 0.15)'
+      ctx.lineWidth = 1.2
       ctx.beginPath()
-      ctx.moveTo(centerX - 10, vanishY)
-      ctx.lineTo(centerX - width * 0.7, height)
+      ctx.moveTo(vanishX - 8, vanishY - 20)
+      ctx.lineTo(0, 40)
+      ctx.moveTo(vanishX + 8, vanishY - 20)
+      ctx.lineTo(width, 40)
       ctx.stroke()
 
-      // Right Track Rail Line
-      ctx.beginPath()
-      ctx.moveTo(centerX + 10, vanishY)
-      ctx.lineTo(centerX + width * 0.7, height)
-      ctx.stroke()
+      // Catenary Support Poles
+      for (let y = vanishY + trackOffset * 0.4; y < height * 0.9; y += 90) {
+        const p = (y - vanishY) / (height - vanishY)
+        const poleWidth = p * width * 1.2
+        const poleLeft = vanishX - poleWidth / 2
+        const poleRight = vanishX + poleWidth / 2
 
-      // Center Track Rail Line
-      ctx.beginPath()
-      ctx.moveTo(centerX, vanishY)
-      ctx.lineTo(centerX, height)
-      ctx.strokeStyle = 'rgba(245, 158, 11, 0.08)'
-      ctx.stroke()
+        ctx.strokeStyle = 'rgba(245, 158, 11, 0.12)'
+        ctx.lineWidth = 1 + p * 1.5
 
-      // Horizontal Railway Sleepers / Ties
-      ctx.strokeStyle = 'rgba(168, 85, 247, 0.08)'
-      for (let y = vanishY + trackOffset; y < height; y += 40) {
-        const progress = (y - vanishY) / (height - vanishY)
-        const trackWidth = progress * width * 1.4
+        // Crossbar
         ctx.beginPath()
-        ctx.moveTo(centerX - trackWidth / 2, y)
-        ctx.lineTo(centerX + trackWidth / 2, y)
+        ctx.moveTo(poleLeft, y - 25 * p)
+        ctx.lineTo(poleRight, y - 25 * p)
+        ctx.stroke()
+
+        // Vertical Mast Posts
+        ctx.beginPath()
+        ctx.moveTo(poleLeft, y - 25 * p)
+        ctx.lineTo(poleLeft, y + 40 * p)
+        ctx.moveTo(poleRight, y - 25 * p)
+        ctx.lineTo(poleRight, y + 40 * p)
         ctx.stroke()
       }
-      ctx.restore()
 
-      // Speed Particle Stars
-      for (let i = 0; i < particles.length; i++) {
-        const p = particles[i]
-        p.z -= p.speed * 1.5
+      // 2. 3D Perspective Railway Tracks (Left & Right Steel Rails)
+      ctx.lineWidth = 2.5
+      const trackGradientLeft = ctx.createLinearGradient(vanishX, vanishY, 0, height)
+      trackGradientLeft.addColorStop(0, 'rgba(6, 182, 212, 0.2)')
+      trackGradientLeft.addColorStop(1, 'rgba(6, 182, 212, 0.8)')
+      ctx.strokeStyle = trackGradientLeft
 
-        if (p.z <= 0) {
-          p.z = width
-          p.x = (Math.random() - 0.5) * width * 2
-          p.y = Math.random() * height
+      // Left Outer Rail
+      ctx.beginPath()
+      ctx.moveTo(vanishX - 15, vanishY)
+      ctx.lineTo(vanishX - width * 0.65, height)
+      ctx.stroke()
+
+      // Left Inner Rail
+      ctx.beginPath()
+      ctx.moveTo(vanishX - 10, vanishY)
+      ctx.lineTo(vanishX - width * 0.61, height)
+      ctx.stroke()
+
+      // Right Outer Rail
+      const trackGradientRight = ctx.createLinearGradient(vanishX, vanishY, width, height)
+      trackGradientRight.addColorStop(0, 'rgba(6, 182, 212, 0.2)')
+      trackGradientRight.addColorStop(1, 'rgba(6, 182, 212, 0.8)')
+      ctx.strokeStyle = trackGradientRight
+
+      ctx.beginPath()
+      ctx.moveTo(vanishX + 15, vanishY)
+      ctx.lineTo(vanishX + width * 0.65, height)
+      ctx.stroke()
+
+      // Right Inner Rail
+      ctx.beginPath()
+      ctx.moveTo(vanishX + 10, vanishY)
+      ctx.lineTo(vanishX + width * 0.61, height)
+      ctx.stroke()
+
+      // 3. Concrete Railway Sleepers / Ties
+      for (let y = vanishY + trackOffset; y < height; y += 45) {
+        const progress = (y - vanishY) / (height - vanishY)
+        const trackWidth = progress * width * 1.25
+        const tieX1 = vanishX - trackWidth / 2
+        const tieX2 = vanishX + trackWidth / 2
+
+        ctx.strokeStyle = `rgba(168, 85, 247, ${0.05 + progress * 0.2})`
+        ctx.lineWidth = 1.5 + progress * 3
+
+        ctx.beginPath()
+        ctx.moveTo(tieX1, y)
+        ctx.lineTo(tieX2, y)
+        ctx.stroke()
+      }
+
+      // 4. Moving Railway Speed Sparks & Signal Beams
+      for (let i = 0; i < sparks.length; i++) {
+        const s = sparks[i]
+        s.z -= s.speed * 2
+
+        if (s.z <= 0) {
+          s.z = width
+          s.x = (Math.random() - 0.5) * width * 2
+          s.y = Math.random() * height
         }
 
-        const k = 250 / p.z
-        const px = p.x * k + width / 2
-        const py = p.y * k + height / 2
+        const k = 280 / s.z
+        const px = s.x * k + width / 2
+        const py = s.y * k + height / 2
 
         if (px >= 0 && px <= width && py >= 0 && py <= height) {
-          const size = Math.max(0.8, (1 - p.z / width) * 3)
-          const alpha = (1 - p.z / width) * 0.75
+          const size = Math.max(1, (1 - s.z / width) * 4)
+          const alpha = (1 - s.z / width) * 0.85
 
           ctx.beginPath()
           ctx.arc(px, py, size, 0, Math.PI * 2)
-          ctx.fillStyle = p.color
+          ctx.fillStyle = s.color
           ctx.globalAlpha = alpha
-          ctx.shadowBlur = 6
-          ctx.shadowColor = p.color
+          ctx.shadowBlur = 8
+          ctx.shadowColor = s.color
           ctx.fill()
           ctx.globalAlpha = 1
           ctx.shadowBlur = 0
         }
       }
+
+      ctx.restore()
 
       animationFrameId = requestAnimationFrame(render)
     }
