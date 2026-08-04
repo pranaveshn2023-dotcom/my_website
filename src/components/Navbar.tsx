@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FileText } from 'lucide-react'
+import { FileText, Train } from 'lucide-react'
 
 const navLinks = [
   { label: 'About', href: '#about' },
-  { label: 'Projects', href: '#projects' },
+  { label: 'Platforms & Work', href: '#projects' },
   { label: 'Experience', href: '#experience' },
-  { label: 'Journey', href: '#journey' },
+  { label: 'Station Timetable', href: '#journey' },
 ]
 
 interface NavbarProps {
@@ -31,12 +31,20 @@ export default function Navbar({ onOpenResume }: NavbarProps) {
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] as const }}
-      style={{ boxShadow: scrolled ? '0 4px 30px rgba(0,0,0,0.3)' : 'none' }}
+      style={{ boxShadow: scrolled ? '0 4px 30px rgba(0,0,0,0.4)' : 'none' }}
     >
       <div className="navbar-inner">
         <a href="#" className="navbar-logo">
-          <div className="navbar-logo-icon">P</div>
-          <span>Pranavesh</span>
+          <div className="navbar-logo-icon">
+            <Train size={18} />
+          </div>
+          <div className="navbar-logo-text">
+            <span>Pranavesh Express</span>
+            <span className="navbar-signal-badge">
+              <span className="signal-dot green" />
+              Signal Clear
+            </span>
+          </div>
         </a>
 
         <div className="navbar-links">
@@ -47,7 +55,7 @@ export default function Navbar({ onOpenResume }: NavbarProps) {
             <FileText size={14} />
             <span>Resume</span>
           </button>
-          <a href="#contact" className="navbar-cta">Contact</a>
+          <a href="#contact" className="navbar-cta">Dispatch Desk</a>
         </div>
 
         <button
@@ -85,11 +93,10 @@ export default function Navbar({ onOpenResume }: NavbarProps) {
               <FileText size={18} />
               <span>View Resume (PDF)</span>
             </button>
-            <a href="#contact" onClick={handleNavClick}>Contact</a>
+            <a href="#contact" onClick={handleNavClick}>Dispatch Desk</a>
           </motion.div>
         )}
       </AnimatePresence>
     </motion.nav>
   )
 }
-

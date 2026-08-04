@@ -2109,12 +2109,36 @@ ul, ol {
   transform: translateY(-3px) scale(1.02);
 }
 
-/* 3D Tilt Card Wrapper */
-.card-3d-wrapper {
-  perspective: 1000px;
-  --rx: 0deg;
-  --ry: 0deg;
-  height: 100%;
+.project-3d-card {
+  border-radius: var(--radius-xl);
+  will-change: transform;
+}
+
+.project-3d-glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 5;
+}
+
+.project-3d-content {
+  position: relative;
+  z-index: 10;
+}
+
+.playground-actions {
+  position: relative;
+  z-index: 50 !important;
+  pointer-events: auto !important;
+}
+
+.playground-actions a {
+  position: relative;
+  z-index: 50 !important;
+  pointer-events: auto !important;
 }
 
 .card-3d-inner {
@@ -2125,19 +2149,127 @@ ul, ol {
   transition: transform 0.15s ease-out, box-shadow 0.3s ease;
   will-change: transform;
 }
-
-.card-3d-wrapper:hover .card-3d-inner {
-  box-shadow: 0 20px 45px -15px var(--glow, rgba(168, 85, 247, 0.35)), 0 0 30px var(--glow, rgba(168, 85, 247, 0.35));
+/* Railway & Express Transit Theme Utilities */
+.navbar-logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
 }
 
-.card-3d-glare {
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: 5;
+.navbar-signal-badge {
+  font-size: 10px;
+  font-weight: 600;
+  color: #10b981;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.signal-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.signal-dot.green {
+  background: #10b981;
+  box-shadow: 0 0 8px #10b981;
+  animation: signal-pulse 1.8s infinite;
+}
+
+@keyframes signal-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.platform-tag {
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+/* Railway Station Route Timetable */
+.railway-timetable {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+}
+
+.railway-station-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.railway-station-card:hover {
+  transform: translateX(6px);
+  box-shadow: 0 10px 30px -10px rgba(6, 182, 212, 0.25);
+}
+
+.railway-station-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.station-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.station-year-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.station-desc {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+.station-footer {
+  display: flex;
+  align-items: center;
+}
+
+.station-status-pill {
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
 }
 
 .card-3d-content {

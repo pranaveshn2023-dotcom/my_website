@@ -8,57 +8,82 @@ export default function ThreeScene() {
     const container = containerRef.current
     if (!container) return
 
-    const width = container.clientWidth || 400
-    const height = container.clientHeight || 400
+    const width = container.clientWidth || 300
+    const height = container.clientHeight || 300
 
     // 1. Scene, Camera, Renderer
     const scene = new THREE.Scene()
     const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000)
-    camera.position.z = 6
+    camera.position.z = 6.5
 
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true })
     renderer.setSize(width, height)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
     container.appendChild(renderer.domElement)
 
-    // 2. Geometries & Materials
-    // A. Main TorusKnot
-    const geometry = new THREE.TorusKnotGeometry(1.2, 0.35, 128, 32)
-    const material = new THREE.MeshStandardMaterial({
-      color: 0xa855f7,
-      wireframe: true,
-      emissive: 0x22d3ee,
-      emissiveIntensity: 0.35,
+    // 2. Locomotive Wheel & Transit Signal Core
+    const group = new THREE.Group()
+    scene.add(group)
+
+    // Outer Railway Wheel Rim
+    const wheelGeo = new THREE.TorusGeometry(1.4, 0.12, 16, 64)
+    const wheelMat = new THREE.MeshStandardMaterial({
+      color: 0x06b6d4,
+      metalness: 0.9,
       roughness: 0.2,
-      metalness: 0.8,
+      wireframe: true,
+      emissive: 0x06b6d4,
+      emissiveIntensity: 0.4,
     })
-    const torusKnot = new THREE.Mesh(geometry, material)
-    scene.add(torusKnot)
+    const wheelMesh = new THREE.Mesh(wheelGeo, wheelMat)
+    group.add(wheelMesh)
 
-    // B. Inner Glowing Core
-    const coreGeo = new THREE.IcosahedronGeometry(0.7, 2)
-    const coreMat = new THREE.MeshBasicMaterial({
-      color: 0x22d3ee,
+    // Inner Locomotive Signal Ring
+    const innerRingGeo = new THREE.TorusGeometry(0.9, 0.08, 16, 48)
+    const innerRingMat = new THREE.MeshStandardMaterial({
+      color: 0xf59e0b,
+      wireframe: true,
+      emissive: 0xf59e0b,
+      emissiveIntensity: 0.5,
+    })
+    const innerRing = new THREE.Mesh(innerRingGeo, innerRingMat)
+    group.add(innerRing)
+
+    // Central Express Signal Headlight Core
+    const headlightGeo = new THREE.SphereGeometry(0.5, 32, 32)
+    const headlightMat = new THREE.MeshBasicMaterial({
+      color: 0x10b981,
       wireframe: true,
     })
-    const coreMesh = new THREE.Mesh(coreGeo, coreMat)
-    scene.add(coreMesh)
+    const headlightMesh = new THREE.Mesh(headlightGeo, headlightMat)
+    group.add(headlightMesh)
 
-    // C. Floating Particles Starfield
+    // Locomotive Wheel Spokes
+    const spokeCount = 6
+    for (let i = 0; i < spokeCount; i++) {
+      const angle = (i / spokeCount) * Math.PI * 2
+      const spokeGeo = new THREE.CylinderGeometry(0.04, 0.04, 2.7, 8)
+      const spokeMat = new THREE.MeshBasicMaterial({ color: 0x06b6d4, wireframe: true })
+      const spoke = new THREE.Mesh(spokeGeo, spokeMat)
+      spoke.rotation.z = angle
+      group.add(spoke)
+    }
+
+    // Floating Signal Particles
     const particlesGeo = new THREE.BufferGeometry()
-    const particleCount = 200
+    const particleCount = 120
     const posArray = new Float32Array(particleCount * 3)
 
     for (let i = 0; i < particleCount * 3; i++) {
-      posArray[i] = (Math.random() - 0.5) * 12
+      posArray[i] = (Math.random() - 0.5) * 10
     }
 
     particlesGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3))
     const particlesMat = new THREE.PointsMaterial({
-      size: 0.035,
-      color: 0x10b981,
+      size: 0.04,
+      color: 0xf59e0b,
       transparent: true,
-      opacity: 0.8,
+      opacity: 0.7,
     })
     const particlePoints = new THREE.Points(particlesGeo, particlesMat)
     scene.add(particlePoints)
@@ -67,15 +92,15 @@ export default function ThreeScene() {
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.6)
     scene.add(ambientLight)
 
-    const pointLight1 = new THREE.PointLight(0x22d3ee, 2, 20)
-    pointLight1.position.set(5, 5, 5)
-    scene.add(pointLight1)
+    const signalLight1 = new THREE.PointLight(0x06b6d4, 2, 15)
+    signalLight1.position.set(4, 4, 4)
+    scene.add(signalLight1)
 
-    const pointLight2 = new THREE.PointLight(0xa855f7, 2, 20)
-    pointLight2.position.set(-5, -5, 5)
-    scene.add(pointLight2)
+    const signalLight2 = new THREE.PointLight(0x10b981, 2, 15)
+    signalLight2.position.set(-4, -4, 4)
+    scene.add(signalLight2)
 
-    // 4. Mouse Interactivity & Motion Loop
+    // 4. Mouse Interactivity
     const mouse = { x: 0, y: 0, targetX: 0, targetY: 0 }
 
     const handleMouseMove = (event: MouseEvent) => {
@@ -87,35 +112,18 @@ export default function ThreeScene() {
 
     window.addEventListener('mousemove', handleMouseMove)
 
-    const handleResize = () => {
-      if (!container) return
-      const w = container.clientWidth
-      const h = container.clientHeight
-      camera.aspect = w / h
-      camera.updateProjectionMatrix()
-      renderer.setSize(w, h)
-    }
-
-    window.addEventListener('resize', handleResize)
-
     let animationFrameId: number
 
     const animate = () => {
-      // Smooth Damping
       mouse.x += (mouse.targetX - mouse.x) * 0.05
       mouse.y += (mouse.targetY - mouse.y) * 0.05
 
-      torusKnot.rotation.x += 0.005
-      torusKnot.rotation.y += 0.008
-      torusKnot.rotation.z += mouse.x * 0.5
-
-      coreMesh.rotation.x -= 0.008
-      coreMesh.rotation.y -= 0.005
-
-      particlePoints.rotation.y += 0.0015
-
+      group.rotation.z += 0.008
+      group.rotation.y += 0.005
+      group.rotation.x = mouse.y * 0.8
       scene.rotation.y = mouse.x * 0.8
-      scene.rotation.x = mouse.y * 0.8
+
+      particlePoints.rotation.y += 0.002
 
       renderer.render(scene, camera)
       animationFrameId = requestAnimationFrame(animate)
@@ -125,15 +133,16 @@ export default function ThreeScene() {
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove)
-      window.removeEventListener('resize', handleResize)
       cancelAnimationFrame(animationFrameId)
       if (container.contains(renderer.domElement)) {
         container.removeChild(renderer.domElement)
       }
-      geometry.dispose()
-      material.dispose()
-      coreGeo.dispose()
-      coreMat.dispose()
+      wheelGeo.dispose()
+      wheelMat.dispose()
+      innerRingGeo.dispose()
+      innerRingMat.dispose()
+      headlightGeo.dispose()
+      headlightMat.dispose()
       particlesGeo.dispose()
       particlesMat.dispose()
       renderer.dispose()
@@ -147,7 +156,6 @@ export default function ThreeScene() {
       style={{
         width: '100%',
         height: '100%',
-        minHeight: '320px',
         position: 'relative',
       }}
     />

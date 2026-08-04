@@ -1,113 +1,122 @@
 import { motion } from 'framer-motion'
-import { ArrowRight, FileText, Cpu, Code2, Sparkles, Search, Briefcase } from 'lucide-react'
+import { Sparkles, ArrowRight, FileText, Code2, Cpu, Train, Search } from 'lucide-react'
 import ThreeScene from './3d/ThreeScene'
 import SocialLinks from './SocialLinks'
-
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: 0.15 },
-  },
-}
-
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const } },
-}
 
 interface HeroProps {
   onOpenResume: () => void
 }
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.1,
+    },
+  },
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const },
+  },
+}
+
 export default function Hero({ onOpenResume }: HeroProps) {
   return (
     <section className="hero" id="hero">
-      <div className="hero-bg-glow" />
       <div className="hero-grid-overlay" />
-
       <div className="hero-container">
-        <motion.div className="hero-grid" variants={container} initial="hidden" animate="show">
-
-          {/* Left Column - Content */}
+        <motion.div
+          className="hero-grid"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          {/* Left Column - Text Content */}
           <div className="hero-text-col">
-            <motion.div variants={item} className="hero-badge">
-              <span className="hero-badge-dot" />
-              Building & Shipping Live Apps
+            <motion.div variants={itemVariants} className="hero-badge">
+              <Train size={14} className="badge-icon-cyan" />
+              <span>Express Line • Building & Shipping Products</span>
             </motion.div>
 
-            <motion.h1 variants={item} className="hero-name">
-              Hello, I'm <span className="hero-name-highlight">Pranavesh N</span>
+            <motion.h1 variants={itemVariants} className="hero-title">
+              Hello, I'm <span className="text-gradient">Pranavesh N</span>
             </motion.h1>
 
-            <motion.p variants={item} className="hero-tagline">
-              BTech ECE <span>•</span> AI Website Builder <span>•</span> Full Stack Developer
+            <motion.p variants={itemVariants} className="hero-subtitle">
+              BTECH ECE • AI WEBSITE BUILDER • FULL STACK DEVELOPER
             </motion.p>
 
-            <motion.p variants={item} className="hero-description">
-              Building web applications to solve real-world problems.
+            <motion.p variants={itemVariants} className="hero-description">
+              Building high-performance web applications and transit solutions to solve real-world problems.
             </motion.p>
 
-            {/* Google Search AI Overview Recognition Badge */}
-            <motion.div variants={item} className="hero-seo-pill">
-              <Search size={14} className="hero-seo-icon" />
-              <span>Recognized on <strong>Google Search AI Overview</strong> for <strong>Sikkanam</strong> & <strong>Marakadhey</strong></span>
+            {/* Google Search AI Recognition Pill */}
+            <motion.div variants={itemVariants} className="hero-ai-badge">
+              <Search size={14} style={{ color: '#22d3ee' }} />
+              <span>Recognized on <strong>Google Search AI Overview</strong> for <strong style={{ color: '#ea580c' }}>Sikkanam</strong> & <strong style={{ color: '#a855f7' }}>Marakadhey</strong></span>
             </motion.div>
 
-            <motion.p variants={item} className="hero-description-sub">
-              Creator of <span className="highlight">ValarchiX</span>, <span className="highlight">Marakadhey-Never Miss Opportunities</span> &{' '}
-              <span className="highlight">Sikkanam</span>
+            <motion.p variants={itemVariants} className="hero-creator-text">
+              Creator of <strong>ValarchiX</strong>, <strong>Marakadhey-Never Miss Opportunities</strong> & <strong>Sikkanam</strong>
             </motion.p>
 
-            {/* Quick Stats Grid */}
-            <motion.div variants={item} className="hero-stats-grid">
+            {/* Stats Row */}
+            <motion.div variants={itemVariants} className="hero-stats-row">
               <div className="hero-stat-card">
-                <span className="hero-stat-number">3</span>
-                <span className="hero-stat-label">Products Built</span>
+                <span className="stat-number">3</span>
+                <span className="stat-label">Products Shipped</span>
               </div>
               <div className="hero-stat-card">
-                <span className="hero-stat-number">2027</span>
-                <span className="hero-stat-label">VIT Chennai Grad</span>
+                <span className="stat-number">2027</span>
+                <span className="stat-label">VIT Chennai Grad</span>
               </div>
               <div className="hero-stat-card">
-                <span className="hero-stat-number">ECE</span>
-                <span className="hero-stat-label">Systems Engineer</span>
+                <span className="stat-number">ECE</span>
+                <span className="stat-label">Systems Engineer</span>
               </div>
             </motion.div>
 
-            {/* Call to Action Buttons */}
-            <motion.div variants={item} className="hero-buttons">
-              <a href="#contact" className="btn btn-primary btn-glowing" id="hero-hireme-btn">
-                <Briefcase size={16} />
-                <span>Contact / Hire Me</span>
+            {/* CTA Buttons */}
+            <motion.div variants={itemVariants} className="hero-cta-group">
+              <a href="#contact" className="btn btn-primary btn-lg btn-glowing" id="hero-contact-btn">
+                <Sparkles size={18} />
+                <span>Dispatch / Contact</span>
               </a>
-              <a href="#projects" className="btn btn-secondary">
+              <a href="#projects" className="btn btn-secondary btn-lg" id="hero-projects-btn">
+                <span>View Platforms</span>
                 <ArrowRight size={16} />
-                <span>View My Work</span>
               </a>
-              <button onClick={onOpenResume} className="btn btn-secondary" id="hero-resume-btn">
+              <button onClick={onOpenResume} className="btn btn-tertiary btn-lg" id="hero-resume-btn">
                 <FileText size={16} />
                 <span>View Resume</span>
               </button>
             </motion.div>
 
-            <motion.div variants={item}>
+            {/* Social Links Dock */}
+            <motion.div variants={itemVariants} style={{ marginTop: '28px', width: '100%' }}>
               <SocialLinks />
             </motion.div>
           </div>
 
-          {/* Right Column - 3D Interactive Canvas & Photo Frame */}
-          <motion.div variants={item} className="hero-visual-col">
+          {/* Right Column - 3D Locomotive Canvas & Photo Frame */}
+          <motion.div variants={itemVariants} className="hero-visual-col">
             <div className="hero-avatar-wrapper">
               <div className="hero-avatar-glow" />
               <div className="hero-avatar-ring" />
 
-              {/* Three.js 3D Scene Overlay */}
+              {/* Three.js 3D Locomotive Transit Core */}
               <div className="hero-three-wrapper">
                 <ThreeScene />
               </div>
 
-              {/* Floating Tech Chips */}
+              {/* Floating Speed Chips */}
               <motion.div
                 className="hero-float-badge badge-top-right"
                 animate={{ y: [-6, 6, -6] }}
@@ -131,8 +140,8 @@ export default function Hero({ onOpenResume }: HeroProps) {
                 animate={{ y: [-5, 5, -5] }}
                 transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
               >
-                <Sparkles size={16} className="badge-icon-amber" />
-                <span>AI Website Builder</span>
+                <Train size={16} className="badge-icon-amber" />
+                <span>IRCTC & Transit Tech</span>
               </motion.div>
 
               {/* Photo Frame Container */}
@@ -147,7 +156,6 @@ export default function Hero({ onOpenResume }: HeroProps) {
               </div>
             </div>
           </motion.div>
-
         </motion.div>
       </div>
     </section>

@@ -3,11 +3,8 @@ import { useEffect, useRef } from 'react'
 interface Particle {
   x: number
   y: number
-  vx: number
-  vy: number
-  radius: number
-  baseAlpha: number
-  alpha: number
+  z: number
+  speed: number
   color: string
 }
 
@@ -24,24 +21,21 @@ export default function ParticlesCanvas() {
     let width = (canvas.width = window.innerWidth)
     let height = (canvas.height = window.innerHeight)
 
-    const colors = ['#22d3ee', '#a855f7', '#10b981', '#6366f1']
-    const particleCount = Math.min(Math.floor((width * height) / 12000), 120)
+    const colors = ['#06b6d4', '#f59e0b', '#10b981', '#a855f7']
     const particles: Particle[] = []
-
-    const mouse = { x: -1000, y: -1000, radius: 180 }
+    const particleCount = 140
 
     for (let i = 0; i < particleCount; i++) {
       particles.push({
-        x: Math.random() * width,
+        x: (Math.random() - 0.5) * width * 2,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.8,
-        vy: (Math.random() - 0.5) * 0.8,
-        radius: Math.random() * 2 + 1,
-        baseAlpha: Math.random() * 0.5 + 0.2,
-        alpha: Math.random() * 0.5 + 0.2,
+        z: Math.random() * width,
+        speed: Math.random() * 2 + 1.5,
         color: colors[Math.floor(Math.random() * colors.length)],
       })
     }
+
+    const mouse = { x: width / 2, y: height / 2 }
 
     const handleResize = () => {
       if (!canvas) return
@@ -54,75 +48,84 @@ export default function ParticlesCanvas() {
       mouse.y = e.clientY
     }
 
-    const handleMouseLeave = () => {
-      mouse.x = -1000
-      mouse.y = -1000
-    }
-
     window.addEventListener('resize', handleResize)
     window.addEventListener('mousemove', handleMouseMove)
-    window.addEventListener('mouseleave', handleMouseLeave)
+
+    let trackOffset = 0
 
     const render = () => {
-      ctx.clearRect(0, 0, width, height)
+      ctx.fillStyle = 'rgba(7, 12, 24, 0.4)'
+      ctx.fillRect(0, 0, width, height)
 
-      // Draw particle connections
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x
-          const dy = particles[i].y - particles[j].y
-          const dist = Math.sqrt(dx * dx + dy * dy)
+      // Perspective Railway Track Lines Background Effect
+      trackOffset = (trackOffset + 1.5) % 40
+      const centerX = width / 2 + (mouse.x - width / 2) * 0.05
+      const vanishY = height * 0.25
 
-          if (dist < 120) {
-            const alpha = (1 - dist / 120) * 0.25
-            ctx.beginPath()
-            ctx.moveTo(particles[i].x, particles[i].y)
-            ctx.lineTo(particles[j].x, particles[j].y)
-            ctx.strokeStyle = `rgba(168, 85, 247, ${alpha})`
-            ctx.lineWidth = 0.6
-            ctx.stroke()
-          }
-        }
+      ctx.save()
+      ctx.strokeStyle = 'rgba(6, 182, 212, 0.12)'
+      ctx.lineWidth = 1.5
+
+      // Left Track Rail Line
+      ctx.beginPath()
+      ctx.moveTo(centerX - 10, vanishY)
+      ctx.lineTo(centerX - width * 0.7, height)
+      ctx.stroke()
+
+      // Right Track Rail Line
+      ctx.beginPath()
+      ctx.moveTo(centerX + 10, vanishY)
+      ctx.lineTo(centerX + width * 0.7, height)
+      ctx.stroke()
+
+      // Center Track Rail Line
+      ctx.beginPath()
+      ctx.moveTo(centerX, vanishY)
+      ctx.lineTo(centerX, height)
+      ctx.strokeStyle = 'rgba(245, 158, 11, 0.08)'
+      ctx.stroke()
+
+      // Horizontal Railway Sleepers / Ties
+      ctx.strokeStyle = 'rgba(168, 85, 247, 0.08)'
+      for (let y = vanishY + trackOffset; y < height; y += 40) {
+        const progress = (y - vanishY) / (height - vanishY)
+        const trackWidth = progress * width * 1.4
+        ctx.beginPath()
+        ctx.moveTo(centerX - trackWidth / 2, y)
+        ctx.lineTo(centerX + trackWidth / 2, y)
+        ctx.stroke()
       }
+      ctx.restore()
 
-      // Update & render particles
+      // Speed Particle Stars
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i]
+        p.z -= p.speed * 1.5
 
-        // Mouse repulsion / interaction
-        const mdx = p.x - mouse.x
-        const mdy = p.y - mouse.y
-        const mdist = Math.sqrt(mdx * mdx + mdy * mdy)
-
-        if (mdist < mouse.radius) {
-          const force = (mouse.radius - mdist) / mouse.radius
-          const angle = Math.atan2(mdy, mdx)
-          p.x += Math.cos(angle) * force * 3
-          p.y += Math.sin(angle) * force * 3
-          p.alpha = Math.min(1, p.baseAlpha + force * 0.5)
-        } else {
-          p.alpha += (p.baseAlpha - p.alpha) * 0.05
+        if (p.z <= 0) {
+          p.z = width
+          p.x = (Math.random() - 0.5) * width * 2
+          p.y = Math.random() * height
         }
 
-        p.x += p.vx
-        p.y += p.vy
+        const k = 250 / p.z
+        const px = p.x * k + width / 2
+        const py = p.y * k + height / 2
 
-        // Screen wrap
-        if (p.x < 0) p.x = width
-        if (p.x > width) p.x = 0
-        if (p.y < 0) p.y = height
-        if (p.y > height) p.y = 0
+        if (px >= 0 && px <= width && py >= 0 && py <= height) {
+          const size = Math.max(0.8, (1 - p.z / width) * 3)
+          const alpha = (1 - p.z / width) * 0.75
 
-        // Draw particle
-        ctx.beginPath()
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2)
-        ctx.fillStyle = p.color
-        ctx.globalAlpha = p.alpha
-        ctx.shadowBlur = 8
-        ctx.shadowColor = p.color
-        ctx.fill()
-        ctx.globalAlpha = 1
-        ctx.shadowBlur = 0
+          ctx.beginPath()
+          ctx.arc(px, py, size, 0, Math.PI * 2)
+          ctx.fillStyle = p.color
+          ctx.globalAlpha = alpha
+          ctx.shadowBlur = 6
+          ctx.shadowColor = p.color
+          ctx.fill()
+          ctx.globalAlpha = 1
+          ctx.shadowBlur = 0
+        }
       }
 
       animationFrameId = requestAnimationFrame(render)
@@ -133,7 +136,6 @@ export default function ParticlesCanvas() {
     return () => {
       window.removeEventListener('resize', handleResize)
       window.removeEventListener('mousemove', handleMouseMove)
-      window.removeEventListener('mouseleave', handleMouseLeave)
       cancelAnimationFrame(animationFrameId)
     }
   }, [])
