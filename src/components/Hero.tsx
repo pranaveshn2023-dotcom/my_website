@@ -12,18 +12,18 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.12,
-      delayChildren: 0.1,
+      staggerChildren: 0.1,
+      delayChildren: 0.05,
     },
   },
 }
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 25 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const },
+    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const },
   },
 }
 
@@ -45,11 +45,11 @@ export default function Hero({ onOpenResume }: HeroProps) {
               <span>Express Line • Building & Shipping Products</span>
             </motion.div>
 
-            <motion.h1 variants={itemVariants} className="hero-title">
-              Hello, I'm <span className="text-gradient">Pranavesh N</span>
+            <motion.h1 variants={itemVariants} className="hero-name">
+              Hello, I'm <span className="hero-name-highlight">Pranavesh N</span>
             </motion.h1>
 
-            <motion.p variants={itemVariants} className="hero-subtitle">
+            <motion.p variants={itemVariants} className="hero-tagline">
               BTECH ECE • AI WEBSITE BUILDER • FULL STACK DEVELOPER
             </motion.p>
 
@@ -59,27 +59,33 @@ export default function Hero({ onOpenResume }: HeroProps) {
 
             {/* Google Search AI Recognition Pill */}
             <motion.div variants={itemVariants} className="hero-ai-badge">
-              <Search size={14} style={{ color: '#22d3ee' }} />
-              <span>Recognized on <strong>Google Search AI Overview</strong> for <strong style={{ color: '#ea580c' }}>Sikkanam</strong> & <strong style={{ color: '#a855f7' }}>Marakadhey</strong></span>
+              <Search size={15} style={{ color: '#22d3ee', flexShrink: 0 }} />
+              <span>
+                Recognized on <strong>Google Search AI Overview</strong> for{' '}
+                <strong style={{ color: '#ea580c' }}>Sikkanam</strong> &{' '}
+                <strong style={{ color: '#a855f7' }}>Marakadhey</strong>
+              </span>
             </motion.div>
 
-            <motion.p variants={itemVariants} className="hero-creator-text">
-              Creator of <strong>ValarchiX</strong>, <strong>Marakadhey-Never Miss Opportunities</strong> & <strong>Sikkanam</strong>
+            <motion.p variants={itemVariants} className="hero-description-sub">
+              Creator of <span className="highlight">ValarchiX</span>,{' '}
+              <span className="highlight">Marakadhey-Never Miss Opportunities</span> &{' '}
+              <span className="highlight">Sikkanam</span>
             </motion.p>
 
             {/* Stats Row */}
-            <motion.div variants={itemVariants} className="hero-stats-row">
+            <motion.div variants={itemVariants} className="hero-stats-grid">
               <div className="hero-stat-card">
-                <span className="stat-number">3</span>
-                <span className="stat-label">Products Shipped</span>
+                <span className="hero-stat-number">3</span>
+                <span className="hero-stat-label">Products Shipped</span>
               </div>
               <div className="hero-stat-card">
-                <span className="stat-number">2027</span>
-                <span className="stat-label">VIT Chennai Grad</span>
+                <span className="hero-stat-number">2027</span>
+                <span className="hero-stat-label">VIT Chennai Grad</span>
               </div>
               <div className="hero-stat-card">
-                <span className="stat-number">ECE</span>
-                <span className="stat-label">Systems Engineer</span>
+                <span className="hero-stat-number">ECE</span>
+                <span className="hero-stat-label">Systems Engineer</span>
               </div>
             </motion.div>
 
@@ -116,7 +122,7 @@ export default function Hero({ onOpenResume }: HeroProps) {
                 <ThreeScene />
               </div>
 
-              {/* Floating Speed Chips */}
+              {/* Floating Badges */}
               <motion.div
                 className="hero-float-badge badge-top-right"
                 animate={{ y: [-6, 6, -6] }}

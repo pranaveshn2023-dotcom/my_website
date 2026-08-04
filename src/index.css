@@ -397,34 +397,25 @@ ul, ol {
   font-weight: 400;
 }
 
-.hero-seo-pill {
+.hero-ai-badge {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 14px;
-  border-radius: var(--radius-md);
-  background: rgba(34, 211, 238, 0.08);
-  border: 1px solid rgba(34, 211, 238, 0.2);
-  font-size: 13px;
+  gap: 10px;
+  padding: 10px 18px;
+  border-radius: var(--radius-full);
+  background: rgba(19, 26, 42, 0.75);
+  border: 1px solid rgba(34, 211, 238, 0.3);
+  font-size: 13.5px;
   color: var(--text-secondary);
-  margin-bottom: 16px;
-  backdrop-filter: blur(10px);
-}
-
-.hero-seo-pill strong {
-  color: var(--accent);
-  font-weight: 600;
-}
-
-.hero-seo-icon {
-  color: var(--accent);
-  flex-shrink: 0;
+  margin: 14px 0 20px 0;
+  backdrop-filter: blur(12px);
+  max-width: 100%;
 }
 
 .hero-description-sub {
   font-size: 14px;
   color: var(--text-tertiary);
-  margin-bottom: 28px;
+  margin-bottom: 24px;
   font-family: var(--font-mono);
   font-weight: 400;
 }
@@ -438,52 +429,51 @@ ul, ol {
 .hero-stats-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
+  gap: 14px;
   width: 100%;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
 }
 
 .hero-stat-card {
-  background: rgba(19, 26, 42, 0.6);
-  border: 1px solid var(--border-hover);
+  background: rgba(19, 26, 42, 0.75);
+  border: 1px solid rgba(34, 211, 238, 0.25);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-radius: var(--radius-md);
-  padding: 12px 14px;
+  padding: 14px 16px;
   display: flex;
   flex-direction: column;
-  transition: all 0.25s var(--ease-smooth);
+  transition: all 0.3s var(--ease-smooth);
 }
 
 .hero-stat-card:hover {
-  border-color: rgba(34, 211, 238, 0.4);
-  background: rgba(19, 26, 42, 0.85);
+  border-color: #22d3ee;
+  background: rgba(19, 26, 42, 0.95);
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 25px -5px rgba(34, 211, 238, 0.3);
 }
 
 .hero-stat-number {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 800;
-  color: var(--accent);
+  color: #22d3ee;
   font-family: var(--font-mono);
   line-height: 1.2;
 }
 
 .hero-stat-label {
-  font-size: 11px;
-  color: var(--text-tertiary);
+  font-size: 12px;
+  color: var(--text-secondary);
   font-weight: 500;
-  margin-top: 2px;
-  letter-spacing: -0.01em;
+  margin-top: 4px;
 }
 
-.hero-buttons {
+.hero-cta-group {
   display: flex;
   gap: 12px;
-  justify-content: flex-start;
+  align-items: center;
   flex-wrap: wrap;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
 }
 
 .hero-socials {
