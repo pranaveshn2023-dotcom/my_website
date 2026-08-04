@@ -2111,14 +2111,40 @@ ul, ol {
 
 /* 3D Tilt Card Wrapper */
 .card-3d-wrapper {
-  transition: transform 0.1s ease-out;
+  perspective: 1000px;
+  --rx: 0deg;
+  --ry: 0deg;
+  height: 100%;
 }
 
 .card-3d-inner {
-  background: var(--bg-card);
+  position: relative;
+  height: 100%;
   border-radius: var(--radius-xl);
-  border: 1px solid var(--border);
-  overflow: hidden;
+  transform: rotateX(var(--rx)) rotateY(var(--ry));
+  transition: transform 0.15s ease-out, box-shadow 0.3s ease;
+  will-change: transform;
+}
+
+.card-3d-wrapper:hover .card-3d-inner {
+  box-shadow: 0 20px 45px -15px var(--glow, rgba(168, 85, 247, 0.35)), 0 0 30px var(--glow, rgba(168, 85, 247, 0.35));
+}
+
+.card-3d-glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 5;
+}
+
+.card-3d-content {
+  position: relative;
+  z-index: 10;
+  height: 100%;
+  pointer-events: auto;
 }
 
 /* Skill Bars */

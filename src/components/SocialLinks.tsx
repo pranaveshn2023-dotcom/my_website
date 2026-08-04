@@ -24,7 +24,7 @@ const socials = [
   },
   {
     name: 'Product Hunt',
-    url: 'https://www.producthunt.com/products/sikkanam',
+    url: 'https://www.producthunt.com/my/products',
     accent: '#da552f',
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">

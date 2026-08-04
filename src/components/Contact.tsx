@@ -1,7 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { Mail, FileText, Send, CheckCircle2, AlertCircle } from 'lucide-react'
-import Card3D from './3d/Card3D'
 
 const LinkedInIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -56,12 +55,18 @@ export default function Contact({ onOpenResume }: ContactProps) {
     setErrors({})
     setIsSubmitting(true)
 
-    // Simulate interactive send
+    const subject = encodeURIComponent(`[Portfolio Inquiry] ${formData.subject}`)
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    )
+    const mailtoUrl = `mailto:pranaveshnandakumar@gmail.com?subject=${subject}&body=${body}`
+
     setTimeout(() => {
       setIsSubmitting(false)
       setIsSubmitted(true)
+      window.location.href = mailtoUrl
       setFormData({ name: '', email: '', subject: '', message: '' })
-    }, 1200)
+    }, 600)
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -96,32 +101,30 @@ export default function Contact({ onOpenResume }: ContactProps) {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] as const }}
           >
-            <Card3D glowColor="rgba(34, 211, 238, 0.3)">
-              <div className="contact-info-card">
-                <h3>Direct Channels</h3>
-                <p>Feel free to reach out directly via email or LinkedIn, or inspect my complete resume.</p>
+            <div className="contact-info-card">
+              <h3>Direct Channels</h3>
+              <p>Feel free to reach out directly via email or LinkedIn, or inspect my complete resume.</p>
 
-                <div className="contact-links">
-                  <button onClick={onOpenResume} className="contact-link" id="contact-resume" style={{ cursor: 'pointer' }}>
-                    <FileText size={16} />
-                    <span>View Resume (PDF)</span>
-                  </button>
-                  <a href="mailto:pranaveshnandakumar@gmail.com" className="contact-link" id="contact-email">
-                    <Mail size={16} />
-                    <span>pranaveshnandakumar@gmail.com</span>
-                  </a>
-                  <a href="https://www.linkedin.com/in/pranaveshn" className="contact-link" target="_blank" rel="noopener noreferrer" id="contact-linkedin">
-                    <LinkedInIcon />
-                    <span>LinkedIn Profile</span>
-                  </a>
-                </div>
-
-                <div className="contact-availability">
-                  <span className="availability-dot" />
-                  <span>Available for Full-Stack & AI Product Collaborations</span>
-                </div>
+              <div className="contact-links">
+                <button onClick={onOpenResume} className="contact-link" id="contact-resume" style={{ cursor: 'pointer' }}>
+                  <FileText size={16} />
+                  <span>View Resume (PDF)</span>
+                </button>
+                <a href="mailto:pranaveshnandakumar@gmail.com" className="contact-link" id="contact-email">
+                  <Mail size={16} />
+                  <span>pranaveshnandakumar@gmail.com</span>
+                </a>
+                <a href="https://www.linkedin.com/in/pranaveshn" className="contact-link" target="_blank" rel="noopener noreferrer" id="contact-linkedin">
+                  <LinkedInIcon />
+                  <span>LinkedIn Profile</span>
+                </a>
               </div>
-            </Card3D>
+
+              <div className="contact-availability">
+                <span className="availability-dot" />
+                <span>Available for Full-Stack & AI Product Collaborations</span>
+              </div>
+            </div>
           </motion.div>
 
           {/* Right Column: Interactive Form */}
@@ -130,130 +133,128 @@ export default function Contact({ onOpenResume }: ContactProps) {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] as const }}
           >
-            <Card3D glowColor="rgba(168, 85, 247, 0.35)">
-              <div className="contact-form-card">
-                <h3>Send a Message</h3>
+            <div className="contact-form-card">
+              <h3>Send a Message</h3>
 
-                <AnimatePresence mode="wait">
-                  {isSubmitted ? (
-                    <motion.div
-                      key="success"
-                      className="contact-success-state"
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.9 }}
-                      transition={{ duration: 0.4 }}
+              <AnimatePresence mode="wait">
+                {isSubmitted ? (
+                  <motion.div
+                    key="success"
+                    className="contact-success-state"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    transition={{ duration: 0.4 }}
+                  >
+                    <CheckCircle2 size={48} className="success-icon" />
+                    <h4>Message Sent Successfully!</h4>
+                    <p>Thank you for reaching out. I have received your message and will respond promptly.</p>
+                    <button onClick={() => setIsSubmitted(false)} className="btn btn-secondary btn-sm" style={{ marginTop: '16px' }}>
+                      Send Another Message
+                    </button>
+                  </motion.div>
+                ) : (
+                  <motion.form
+                    key="form"
+                    onSubmit={handleSubmit}
+                    className="contact-form"
+                    initial={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                  >
+                    <div className="form-group">
+                      <label htmlFor="contact-name">Your Name</label>
+                      <input
+                        type="text"
+                        id="contact-name"
+                        name="name"
+                        placeholder="e.g. Alex Morgan"
+                        value={formData.name}
+                        onChange={handleChange}
+                        className={errors.name ? 'input-error' : ''}
+                      />
+                      {errors.name && (
+                        <span className="field-error">
+                          <AlertCircle size={12} /> {errors.name}
+                        </span>
+                      )}
+                    </div>
+
+                    <div className="form-group">
+                      <label htmlFor="contact-email-input">Your Email</label>
+                      <input
+                        type="email"
+                        id="contact-email-input"
+                        name="email"
+                        placeholder="e.g. alex@example.com"
+                        value={formData.email}
+                        onChange={handleChange}
+                        className={errors.email ? 'input-error' : ''}
+                      />
+                      {errors.email && (
+                        <span className="field-error">
+                          <AlertCircle size={12} /> {errors.email}
+                        </span>
+                      )}
+                    </div>
+
+                    <div className="form-group">
+                      <label htmlFor="contact-subject">Subject</label>
+                      <input
+                        type="text"
+                        id="contact-subject"
+                        name="subject"
+                        placeholder="e.g. Project Inquiry / Collaboration"
+                        value={formData.subject}
+                        onChange={handleChange}
+                        className={errors.subject ? 'input-error' : ''}
+                      />
+                      {errors.subject && (
+                        <span className="field-error">
+                          <AlertCircle size={12} /> {errors.subject}
+                        </span>
+                      )}
+                    </div>
+
+                    <div className="form-group">
+                      <div className="form-label-row">
+                        <label htmlFor="contact-message">Message</label>
+                        <span className="char-count">{formData.message.length} chars</span>
+                      </div>
+                      <textarea
+                        id="contact-message"
+                        name="message"
+                        rows={4}
+                        placeholder="Write your message details here..."
+                        value={formData.message}
+                        onChange={handleChange}
+                        className={errors.message ? 'input-error' : ''}
+                      />
+                      {errors.message && (
+                        <span className="field-error">
+                          <AlertCircle size={12} /> {errors.message}
+                        </span>
+                      )}
+                    </div>
+
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="btn btn-primary btn-full contact-submit-btn"
+                      id="contact-submit-button"
                     >
-                      <CheckCircle2 size={48} className="success-icon" />
-                      <h4>Message Sent Successfully!</h4>
-                      <p>Thank you for reaching out. I have received your message and will respond promptly.</p>
-                      <button onClick={() => setIsSubmitted(false)} className="btn btn-secondary btn-sm" style={{ marginTop: '16px' }}>
-                        Send Another Message
-                      </button>
-                    </motion.div>
-                  ) : (
-                    <motion.form
-                      key="form"
-                      onSubmit={handleSubmit}
-                      className="contact-form"
-                      initial={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                    >
-                      <div className="form-group">
-                        <label htmlFor="contact-name">Your Name</label>
-                        <input
-                          type="text"
-                          id="contact-name"
-                          name="name"
-                          placeholder="e.g. Alex Morgan"
-                          value={formData.name}
-                          onChange={handleChange}
-                          className={errors.name ? 'input-error' : ''}
-                        />
-                        {errors.name && (
-                          <span className="field-error">
-                            <AlertCircle size={12} /> {errors.name}
-                          </span>
-                        )}
-                      </div>
-
-                      <div className="form-group">
-                        <label htmlFor="contact-email-input">Your Email</label>
-                        <input
-                          type="email"
-                          id="contact-email-input"
-                          name="email"
-                          placeholder="e.g. alex@example.com"
-                          value={formData.email}
-                          onChange={handleChange}
-                          className={errors.email ? 'input-error' : ''}
-                        />
-                        {errors.email && (
-                          <span className="field-error">
-                            <AlertCircle size={12} /> {errors.email}
-                          </span>
-                        )}
-                      </div>
-
-                      <div className="form-group">
-                        <label htmlFor="contact-subject">Subject</label>
-                        <input
-                          type="text"
-                          id="contact-subject"
-                          name="subject"
-                          placeholder="e.g. Project Inquiry / Collaboration"
-                          value={formData.subject}
-                          onChange={handleChange}
-                          className={errors.subject ? 'input-error' : ''}
-                        />
-                        {errors.subject && (
-                          <span className="field-error">
-                            <AlertCircle size={12} /> {errors.subject}
-                          </span>
-                        )}
-                      </div>
-
-                      <div className="form-group">
-                        <div className="form-label-row">
-                          <label htmlFor="contact-message">Message</label>
-                          <span className="char-count">{formData.message.length} chars</span>
-                        </div>
-                        <textarea
-                          id="contact-message"
-                          name="message"
-                          rows={4}
-                          placeholder="Write your message details here..."
-                          value={formData.message}
-                          onChange={handleChange}
-                          className={errors.message ? 'input-error' : ''}
-                        />
-                        {errors.message && (
-                          <span className="field-error">
-                            <AlertCircle size={12} /> {errors.message}
-                          </span>
-                        )}
-                      </div>
-
-                      <button
-                        type="submit"
-                        disabled={isSubmitting}
-                        className="btn btn-primary btn-full contact-submit-btn"
-                        id="contact-submit-button"
-                      >
-                        {isSubmitting ? (
-                          <span className="spinner-text">Sending Message...</span>
-                        ) : (
-                          <>
-                            <Send size={16} />
-                            <span>Send Message</span>
-                          </>
-                        )}
-                      </button>
-                    </motion.form>
-                  )}
-                </AnimatePresence>
-              </div>
-            </Card3D>
+                      {isSubmitting ? (
+                        <span className="spinner-text">Sending Message...</span>
+                      ) : (
+                        <>
+                          <Send size={16} />
+                          <span>Send Message</span>
+                        </>
+                      )}
+                    </button>
+                  </motion.form>
+                )}
+              </AnimatePresence>
+            </div>
           </motion.div>
         </div>
       </div>

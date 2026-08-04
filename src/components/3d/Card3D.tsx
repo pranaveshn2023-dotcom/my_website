@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useRef } from 'react'
 
 interface Card3DProps {
   children: React.ReactNode
@@ -11,12 +11,10 @@ export default function Card3D({
   children,
   className = '',
   style = {},
-  glowColor = 'rgba(168, 85, 247, 0.3)',
+  glowColor = 'rgba(168, 85, 247, 0.35)',
 }: Card3DProps) {
   const cardRef = useRef<HTMLDivElement | null>(null)
-  const [rotX, setRotX] = useState(0)
-  const [rotY, setRotY] = useState(0)
-  const [glarePos, setGlarePos] = useState({ x: 50, y: 50, opacity: 0 })
+  const glareRef = useRef<HTMLDivElement | null>(null)
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return
@@ -27,21 +25,28 @@ export default function Card3D({
     const centerX = rect.width / 2
     const centerY = rect.height / 2
 
-    const rotateX = -((y - centerY) / centerY) * 12
-    const rotateY = ((x - centerX) / centerX) * 12
+    const rotateX = -((y - centerY) / centerY) * 8
+    const rotateY = ((x - centerX) / centerX) * 8
 
-    setRotX(rotateX)
-    setRotY(rotateY)
+    cardRef.current.style.setProperty('--rx', `${rotateX.toFixed(2)}deg`)
+    cardRef.current.style.setProperty('--ry', `${rotateY.toFixed(2)}deg`)
+    cardRef.current.style.setProperty('--glow', glowColor)
 
-    const glareX = (x / rect.width) * 100
-    const glareY = (y / rect.height) * 100
-    setGlarePos({ x: glareX, y: glareY, opacity: 0.25 })
+    if (glareRef.current) {
+      const glareX = ((x / rect.width) * 100).toFixed(1)
+      const glareY = ((y / rect.height) * 100).toFixed(1)
+      glareRef.current.style.background = `radial-gradient(circle at ${glareX}% ${glareY}%, rgba(255,255,255,0.2) 0%, transparent 60%)`
+      glareRef.current.style.opacity = '1'
+    }
   }
 
   const handleMouseLeave = () => {
-    setRotX(0)
-    setRotY(0)
-    setGlarePos((prev) => ({ ...prev, opacity: 0 }))
+    if (!cardRef.current) return
+    cardRef.current.style.setProperty('--rx', '0deg')
+    cardRef.current.style.setProperty('--ry', '0deg')
+    if (glareRef.current) {
+      glareRef.current.style.opacity = '0'
+    }
   }
 
   return (
@@ -50,41 +55,11 @@ export default function Card3D({
       className={`card-3d-wrapper ${className}`}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      style={{
-        perspective: '1000px',
-        transformStyle: 'preserve-3d',
-        ...style,
-      }}
+      style={style}
     >
-      <div
-        className="card-3d-inner"
-        style={{
-          transform: `rotateX(${rotX}deg) rotateY(${rotY}deg) translateZ(0)`,
-          transition: rotX === 0 && rotY === 0 ? 'transform 0.5s ease' : 'none',
-          boxShadow:
-            rotX !== 0 || rotY !== 0
-              ? `0 20px 40px -15px ${glowColor}, 0 0 25px ${glowColor}`
-              : undefined,
-          position: 'relative',
-          borderRadius: 'inherit',
-          height: '100%',
-        }}
-      >
-        {/* Dynamic Specular Glare */}
-        <div
-          aria-hidden="true"
-          style={{
-            position: 'absolute',
-            inset: 0,
-            borderRadius: 'inherit',
-            background: `radial-gradient(circle at ${glarePos.x}% ${glarePos.y}%, rgba(255,255,255,0.4) 0%, transparent 60%)`,
-            opacity: glarePos.opacity,
-            pointerEvents: 'none',
-            transition: 'opacity 0.3s ease',
-            zIndex: 10,
-          }}
-        />
-        <div style={{ position: 'relative', zIndex: 2, height: '100%' }}>
+      <div className="card-3d-inner">
+        <div ref={glareRef} className="card-3d-glare" />
+        <div className="card-3d-content">
           {children}
         </div>
       </div>
