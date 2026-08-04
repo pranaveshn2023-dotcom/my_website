@@ -59,7 +59,7 @@ export default function Hero({ onOpenResume }: HeroProps) {
 
             <motion.p variants={itemVariants} className="hero-tagline">
               <Train size={16} style={{ color: '#22d3ee', display: 'inline', marginRight: '6px' }} />
-              RAILWAY TRANSIT ENTHUSIAST • FULL-STACK & PWA ARCHITECT
+              Final Year ECE Student • FULL-STACK & PWA ARCHITECT
             </motion.p>
 
             <motion.p variants={itemVariants} className="hero-description">
