@@ -34,7 +34,7 @@ const socials = [
   },
   {
     name: 'Email',
-    url: 'mailto:pranavesh.n2023@vitstudent.ac.in',
+    url: 'mailto:pranaveshnandakumar@gmail.com',
     accent: '#10b981',
     icon: <Mail size={20} />,
   },
