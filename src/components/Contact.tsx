@@ -1,6 +1,6 @@
-import React, { useState, useRef } from 'react'
-import { motion, useInView, AnimatePresence } from 'framer-motion'
-import { Mail, FileText, Send, CheckCircle2, AlertCircle } from 'lucide-react'
+import { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
+import { Mail, FileText } from 'lucide-react'
 
 const LinkedInIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -15,67 +15,6 @@ interface ContactProps {
 export default function Contact({ onOpenResume }: ContactProps) {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-100px' })
-
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-  })
-
-  const [errors, setErrors] = useState<Record<string, string>>({})
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
-
-  const validate = () => {
-    const errs: Record<string, string> = {}
-    if (!formData.name.trim()) errs.name = 'Full name is required'
-    if (!formData.email.trim()) {
-      errs.email = 'Email address is required'
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      errs.email = 'Please enter a valid email address'
-    }
-    if (!formData.subject.trim()) errs.subject = 'Subject is required'
-    if (!formData.message.trim()) {
-      errs.message = 'Message content is required'
-    } else if (formData.message.trim().length < 10) {
-      errs.message = 'Message must be at least 10 characters long'
-    }
-    return errs
-  }
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    const validationErrors = validate()
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors)
-      return
-    }
-
-    setErrors({})
-    setIsSubmitting(true)
-
-    const subject = encodeURIComponent(`[Portfolio Inquiry] ${formData.subject}`)
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-    )
-    const mailtoUrl = `mailto:pranaveshnandakumar@gmail.com?subject=${subject}&body=${body}`
-
-    setTimeout(() => {
-      setIsSubmitting(false)
-      setIsSubmitted(true)
-      window.location.href = mailtoUrl
-      setFormData({ name: '', email: '', subject: '', message: '' })
-    }, 600)
-  }
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
-    if (errors[name]) {
-      setErrors((prev) => ({ ...prev, [name]: '' }))
-    }
-  }
 
   return (
     <section className="section" id="contact">
@@ -94,18 +33,17 @@ export default function Contact({ onOpenResume }: ContactProps) {
           </p>
         </motion.div>
 
-        <div className="contact-grid">
-          {/* Left Column: Direct Links & Info */}
+        <div className="contact-single-container" style={{ maxWidth: '600px', margin: '0 auto' }}>
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] as const }}
           >
-            <div className="contact-info-card">
+            <div className="contact-info-card" style={{ textAlign: 'center' }}>
               <h3>Direct Channels</h3>
               <p>Feel free to reach out directly via email or LinkedIn, or inspect my complete resume.</p>
 
-              <div className="contact-links">
+              <div className="contact-links" style={{ justifyContent: 'center' }}>
                 <button onClick={onOpenResume} className="contact-link" id="contact-resume" style={{ cursor: 'pointer' }}>
                   <FileText size={16} />
                   <span>View Resume (PDF)</span>
@@ -120,140 +58,10 @@ export default function Contact({ onOpenResume }: ContactProps) {
                 </a>
               </div>
 
-              <div className="contact-availability">
+              <div className="contact-availability" style={{ justifyContent: 'center' }}>
                 <span className="availability-dot" />
                 <span>Available for Full-Stack & AI Product Collaborations</span>
               </div>
-            </div>
-          </motion.div>
-
-          {/* Right Column: Interactive Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] as const }}
-          >
-            <div className="contact-form-card">
-              <h3>Send a Message</h3>
-
-              <AnimatePresence mode="wait">
-                {isSubmitted ? (
-                  <motion.div
-                    key="success"
-                    className="contact-success-state"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.9 }}
-                    transition={{ duration: 0.4 }}
-                  >
-                    <CheckCircle2 size={48} className="success-icon" />
-                    <h4>Message Sent Successfully!</h4>
-                    <p>Thank you for reaching out. I have received your message and will respond promptly.</p>
-                    <button onClick={() => setIsSubmitted(false)} className="btn btn-secondary btn-sm" style={{ marginTop: '16px' }}>
-                      Send Another Message
-                    </button>
-                  </motion.div>
-                ) : (
-                  <motion.form
-                    key="form"
-                    onSubmit={handleSubmit}
-                    className="contact-form"
-                    initial={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                  >
-                    <div className="form-group">
-                      <label htmlFor="contact-name">Your Name</label>
-                      <input
-                        type="text"
-                        id="contact-name"
-                        name="name"
-                        placeholder="e.g. Alex Morgan"
-                        value={formData.name}
-                        onChange={handleChange}
-                        className={errors.name ? 'input-error' : ''}
-                      />
-                      {errors.name && (
-                        <span className="field-error">
-                          <AlertCircle size={12} /> {errors.name}
-                        </span>
-                      )}
-                    </div>
-
-                    <div className="form-group">
-                      <label htmlFor="contact-email-input">Your Email</label>
-                      <input
-                        type="email"
-                        id="contact-email-input"
-                        name="email"
-                        placeholder="e.g. alex@example.com"
-                        value={formData.email}
-                        onChange={handleChange}
-                        className={errors.email ? 'input-error' : ''}
-                      />
-                      {errors.email && (
-                        <span className="field-error">
-                          <AlertCircle size={12} /> {errors.email}
-                        </span>
-                      )}
-                    </div>
-
-                    <div className="form-group">
-                      <label htmlFor="contact-subject">Subject</label>
-                      <input
-                        type="text"
-                        id="contact-subject"
-                        name="subject"
-                        placeholder="e.g. Project Inquiry / Collaboration"
-                        value={formData.subject}
-                        onChange={handleChange}
-                        className={errors.subject ? 'input-error' : ''}
-                      />
-                      {errors.subject && (
-                        <span className="field-error">
-                          <AlertCircle size={12} /> {errors.subject}
-                        </span>
-                      )}
-                    </div>
-
-                    <div className="form-group">
-                      <div className="form-label-row">
-                        <label htmlFor="contact-message">Message</label>
-                        <span className="char-count">{formData.message.length} chars</span>
-                      </div>
-                      <textarea
-                        id="contact-message"
-                        name="message"
-                        rows={4}
-                        placeholder="Write your message details here..."
-                        value={formData.message}
-                        onChange={handleChange}
-                        className={errors.message ? 'input-error' : ''}
-                      />
-                      {errors.message && (
-                        <span className="field-error">
-                          <AlertCircle size={12} /> {errors.message}
-                        </span>
-                      )}
-                    </div>
-
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="btn btn-primary btn-full contact-submit-btn"
-                      id="contact-submit-button"
-                    >
-                      {isSubmitting ? (
-                        <span className="spinner-text">Sending Message...</span>
-                      ) : (
-                        <>
-                          <Send size={16} />
-                          <span>Send Message</span>
-                        </>
-                      )}
-                    </button>
-                  </motion.form>
-                )}
-              </AnimatePresence>
             </div>
           </motion.div>
         </div>
