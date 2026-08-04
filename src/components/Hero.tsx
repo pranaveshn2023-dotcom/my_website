@@ -63,7 +63,7 @@ export default function Hero({ onOpenResume }: HeroProps) {
             </motion.p>
 
             <motion.p variants={itemVariants} className="hero-description">
-              Driven by a deep passion for railway systems, train engineering, and logical software design. I build high-performance web applications, transit routing engines, and Chrome extensions to solve real-world challenges.
+              Driven by a deep passion for learning new things and problem solving. I build high-performance web applications, transit routing engines, and Chrome extensions to solve real-world challenges.
             </motion.p>
 
             {/* Google Search AI Recognition Pill */}
