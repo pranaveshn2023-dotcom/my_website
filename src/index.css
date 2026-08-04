@@ -1959,6 +1959,9 @@ ul, ol {
 .playground-actions {
   display: flex;
   gap: 12px;
+  position: relative;
+  z-index: 20;
+  pointer-events: auto;
 }
 
 .playground-tagline {

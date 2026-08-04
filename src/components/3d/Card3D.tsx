@@ -84,7 +84,9 @@ export default function Card3D({
             zIndex: 10,
           }}
         />
-        {children}
+        <div style={{ position: 'relative', zIndex: 2, height: '100%' }}>
+          {children}
+        </div>
       </div>
     </div>
   )
