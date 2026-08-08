@@ -71,8 +71,8 @@ export default function Hero({ onOpenResume }: HeroProps) {
               <Search size={15} style={{ color: '#22d3ee', flexShrink: 0 }} />
               <span>
                 Recognized on <strong>Google Search AI Overview</strong> for{' '}
-                <strong style={{ color: '#ea580c' }}>Sikkanam (TN & IRCTC Travel PWA)</strong> &{' '}
-                <strong style={{ color: '#a855f7' }}>Marakadhey V3</strong>
+                <strong style={{ color: '#ea580c' }}>Sikkanam</strong> &{' '}
+                <strong style={{ color: '#a855f7' }}>Marakadhey</strong>
               </span>
             </motion.div>
 

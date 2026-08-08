@@ -85,7 +85,7 @@ export default function About({ onOpenResume }: AboutProps) {
             {[
               { value: '3', label: 'Products Shipped' },
               { value: '🚀', label: 'Product Hunt Launch' },
-              { value: '✅', label: 'Chrome Store Published' },
+              { value: '✅', label: 'Chrome Web Store and Edge Add-ons Published' },
               { value: '🎓', label: 'ECE @ VIT Chennai' },
             ].map((stat, i) => (
               <motion.div

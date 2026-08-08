@@ -16,15 +16,29 @@ const articlesData = [
     tags: ['OSRM Engine', 'React PWA', 'Gemini AI', 'Tailwind CSS'],
   },
   {
-    title: 'Building Marakadhey: Syncing Manifest V3 Chrome Extension with Google Calendar',
+    title: 'Building Marakadhey: Syncing Manifest Chrome  and edge Extension with Google Calendar',
     category: 'Browser Extensions',
     readTime: '4 min read',
     date: '2026',
     summary:
-      'Deep dive into background service workers, Chrome Alarms API, and notification sync architecture in Manifest V3 to help users never miss deadlines.',
+      'Deep dive into background service workers, Chrome Alarms API, and notification sync architecture in Manifest V3 — now published on both Chrome Web Store and Microsoft Edge Add-ons — to help users never miss deadlines.',
     link: 'https://chromewebstore.google.com/detail/marakadhey/inidbaohifkncdjnondbkljhoogkhnce',
+    links: [
+      {
+        label: 'Chrome Web Store',
+        url: 'https://chromewebstore.google.com/detail/marakadhey/inidbaohifkncdjnondbkljhoogkhnce',
+      },
+      {
+        label: 'Edge Add-ons',
+        url: 'https://microsoftedge.microsoft.com/addons/detail/marakadhey%E2%80%93never-miss-opp/cmndbipcnkkmeojkioajenbckapcfpla',
+      },
+      {
+        label: 'Product Hunt Launch',
+        url: 'https://www.producthunt.com/products/marakadhey/marakadhey/launch-day?utm_source=my-products',
+      },
+    ],
     accent: '#a855f7',
-    tags: ['Manifest V3', 'JavaScript', 'Google Calendar API', 'Chrome Web Store'],
+    tags: ['Manifest V3', 'JavaScript', 'Google Calendar API', 'Chrome Web Store', 'Edge Add-ons', 'Product Hunt'],
   },
   {
     title: 'Evidence-Based Investing & Valarchi Vaathi: AI Financial Tutor Architecture',
@@ -97,16 +111,34 @@ export default function Articles() {
                     ))}
                   </div>
 
-                  <a
-                    href={article.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="article-read-btn"
-                    style={{ color: article.accent }}
-                  >
-                    <span>Read Article / Case Study</span>
-                    <ArrowUpRight size={16} />
-                  </a>
+                  <div className="article-links">
+                    {article.links ? (
+                      article.links.map((link) => (
+                        <a
+                          key={link.label}
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="article-read-btn"
+                          style={{ color: article.accent }}
+                        >
+                          <span>{link.label}</span>
+                          <ArrowUpRight size={16} />
+                        </a>
+                      ))
+                    ) : (
+                      <a
+                        href={article.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="article-read-btn"
+                        style={{ color: article.accent }}
+                      >
+                        <span>Read Article / Case Study</span>
+                        <ArrowUpRight size={16} />
+                      </a>
+                    )}
+                  </div>
                 </div>
               </Card3D>
             </motion.div>

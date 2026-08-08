@@ -32,22 +32,23 @@ const projectsData = [
     platform: 'Platform 02',
     name: 'Marakadhey-Never Miss Opportunities',
     tabLabel: 'Marakadhey',
-    category: 'Chrome Web Store Extension',
+    category: 'Chrome & Edge Web Store Extension',
     accent: '#A855F7',
     logo: '/marakadhey-logo.jpg',
-    tagline: "A live Google Chrome extension that helps users save important webpages and sets automated reminders so they never miss deadlines. Built using JavaScript and Chrome's Manifest V3 architecture, syncing browser notifications with Google Calendar.",
+    tagline: "A live browser extension available on both Chrome Web Store and Microsoft Edge Add-ons that helps users save important webpages and sets automated reminders so they never miss deadlines. Built using JavaScript and Chrome's Manifest V3 architecture, syncing browser notifications with Google Calendar.",
     liveUrl: 'https://chromewebstore.google.com/detail/marakadhey/inidbaohifkncdjnondbkljhoogkhnce',
+    edgeAddonsUrl: 'https://microsoftedge.microsoft.com/addons/detail/marakadhey%E2%80%93never-miss-opp/cmndbipcnkkmeojkioajenbckapcfpla',
     productHuntUrl: 'https://www.producthunt.com/products/marakadhey/marakadhey/launch-day?utm_source=my-products',
     metrics: [
-      { label: 'Store Status', value: 'Published Live' },
-      { label: 'Architecture', value: 'Manifest V3' },
+      { label: 'Chrome Store', value: 'Published Live' },
+      { label: 'Edge Add-ons', value: 'Published Live' },
       { label: 'Integration', value: 'Google Calendar' },
     ],
     features: [
       'Manifest V3 Architecture',
       'Google Calendar Notification Sync',
       'Automated Deadline Reminders',
-      'Chrome Web Store Published',
+      'Chrome Web Store & Edge Add-ons Published',
     ],
     techStack: ['JavaScript', 'Chrome Extension API', 'Manifest V3', 'Google Calendar API'],
   },
@@ -151,8 +152,20 @@ export default function Projects() {
                     id={`btn-visit-${current.id}`}
                   >
                     <ExternalLink size={14} />
-                    Visit Product
+                    {current.edgeAddonsUrl ? 'Chrome Web Store' : 'Visit Product'}
                   </a>
+                  {current.edgeAddonsUrl && (
+                    <a
+                      href={current.edgeAddonsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-secondary btn-sm"
+                      id={`btn-edge-${current.id}`}
+                    >
+                      <ExternalLink size={14} />
+                      Edge Add-ons
+                    </a>
+                  )}
                   {current.productHuntUrl && (
                     <a
                       href={current.productHuntUrl}

@@ -18,11 +18,11 @@ const stationRoute = [
     text: 'Built and shipped Sikkanam, a privacy-first TN travel PWA with custom OSRM mapping engine and IRCTC/TNSTC fare pipelines.',
   },
   {
-    station: 'Station 03 • Marakadhey V3 & ValarchiX Platform',
+    station: 'Station 03 • Marakadhey & ValarchiX Platform',
     year: '2026',
     status: 'On Track',
     accent: '#a855f7',
-    text: 'Published Marakadhey Chrome Extension on Chrome Web Store and shipped ValarchiX personal finance platform featuring Valarchi Vaathi AI tutor.',
+    text: 'Published Marakadhey browser extension on Chrome Web Store and Microsoft Edge Add-ons, and shipped ValarchiX personal finance platform featuring Valarchi Vaathi AI tutor.',
   },
   {
     station: 'Station 04 • Danfoss Industry Depot',

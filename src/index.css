@@ -1161,11 +1161,45 @@ ul, ol {
   flex-shrink: 0;
 }
 
+.achievement-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.achievement-icon.brand {
+  font-size: 26px;
+}
+
+.achievement-icon.lucide {
+  font-size: 24px;
+  color: var(--accent);
+}
+
 .achievement-text {
   font-size: 14px;
   font-weight: 600;
   color: var(--text-primary);
   white-space: nowrap;
+}
+
+.achievements-credit {
+  text-align: center;
+  margin-top: 32px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  font-family: var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.achievements-credit::before,
+.achievements-credit::after {
+  content: '—';
+  color: var(--accent);
+  margin: 0 10px;
 }
 
 /* === Skills Section === */
