@@ -14,7 +14,7 @@ const socials = [
   },
   {
     name: 'GitHub',
-    url: 'https://github.com/pranaveshnandakumar-cmyk',
+    url: 'https://github.com/pranavesh-n',
     accent: '#22d3ee',
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">

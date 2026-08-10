@@ -6,9 +6,9 @@ import Card3D from './3d/Card3D'
 const profiles = [
   {
     name: 'GitHub',
-    handle: '@pranaveshnandakumar-cmyk',
-    url: 'https://github.com/pranaveshnandakumar-cmyk',
-    badge: '3+ Open Source Apps',
+    handle: '@pranavesh-n',
+    url: 'https://github.com/pranavesh-n',
+    badge: '3 Open Source products',
     accent: '#22d3ee',
     icon: <Terminal size={22} />,
     description: 'Repositories for ValarchiX, Sikkanam PWA, Marakadhey Extension, and full stack projects.',
