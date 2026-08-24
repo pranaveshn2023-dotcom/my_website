@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { ArrowUpRight, BookOpen, Clock, Tag } from 'lucide-react'
+import { ArrowUpRight, BookOpen, Clock, Tag, Download } from 'lucide-react'
 import Card3D from './3d/Card3D'
 
 const articlesData = [
@@ -33,12 +33,17 @@ const articlesData = [
         url: 'https://microsoftedge.microsoft.com/addons/detail/marakadhey%E2%80%93never-miss-opp/cmndbipcnkkmeojkioajenbckapcfpla',
       },
       {
+        label: 'Download Android APK',
+        url: '/marakadhey_mobile.apk',
+        download: 'marakadhey_mobile.apk',
+      },
+      {
         label: 'Product Hunt Launch',
         url: 'https://www.producthunt.com/products/marakadhey/marakadhey/launch-day?utm_source=my-products',
       },
     ],
     accent: '#a855f7',
-    tags: ['Manifest V3', 'JavaScript', 'Google Calendar API', 'Chrome Web Store', 'Edge Add-ons', 'Product Hunt'],
+    tags: ['Manifest V3', 'Android APK', 'Google Calendar API', 'Chrome Web Store', 'Edge Add-ons'],
   },
   {
     title: 'Evidence-Based Investing & Valarchi Vaathi: AI Financial Tutor Architecture',
@@ -119,11 +124,12 @@ export default function Articles() {
                           href={link.url}
                           target="_blank"
                           rel="noopener noreferrer"
+                          download={'download' in link ? (link.download as string) : undefined}
                           className="article-read-btn"
                           style={{ color: article.accent }}
                         >
                           <span>{link.label}</span>
-                          <ArrowUpRight size={16} />
+                          {'download' in link ? <Download size={16} /> : <ArrowUpRight size={16} />}
                         </a>
                       ))
                     ) : (

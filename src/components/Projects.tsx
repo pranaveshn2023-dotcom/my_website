@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { ExternalLink, Rocket, CheckCircle2, Train } from 'lucide-react'
+import { ExternalLink, Rocket, CheckCircle2, Train, Download, Smartphone, Monitor } from 'lucide-react'
 import Project3DCard from './3d/Project3DCard'
 
 const projectsData = [
@@ -32,25 +32,37 @@ const projectsData = [
     platform: 'Platform 02',
     name: 'Marakadhey-Never Miss Opportunities',
     tabLabel: 'Marakadhey',
-    category: 'Chrome & Edge Web Store Extension',
+    category: 'Dual-Platform: PC Browser Extension & Android Mobile App',
     accent: '#A855F7',
     logo: '/marakadhey-logo.jpg',
-    tagline: "A live browser extension available on both Chrome Web Store and Microsoft Edge Add-ons that helps users save important webpages and sets automated reminders so they never miss deadlines. Built using JavaScript and Chrome's Manifest V3 architecture, syncing browser notifications with Google Calendar.",
+    tagline: "Built for two distinct user ecosystems: A live Browser Extension on Chrome Web Store & Microsoft Edge Add-ons for PC/Desktop workflows with Google Calendar sync, alongside a dedicated Android Mobile App with native background alarms so you never miss critical opportunities on the go.",
     liveUrl: 'https://chromewebstore.google.com/detail/marakadhey/inidbaohifkncdjnondbkljhoogkhnce',
     edgeAddonsUrl: 'https://microsoftedge.microsoft.com/addons/detail/marakadhey%E2%80%93never-miss-opp/cmndbipcnkkmeojkioajenbckapcfpla',
     productHuntUrl: 'https://www.producthunt.com/products/marakadhey/marakadhey/launch-day?utm_source=my-products',
+    apkUrl: '/marakadhey_mobile.apk',
     metrics: [
-      { label: 'Chrome Store', value: 'Published Live' },
-      { label: 'Edge Add-ons', value: 'Published Live' },
-      { label: 'Integration', value: 'Google Calendar' },
+      { label: 'PC Platform', value: 'Chrome & Edge' },
+      { label: 'Mobile Platform', value: 'Android (.apk)' },
+      { label: 'Reminders Engine', value: 'AlarmManager' },
+      { label: 'PC Calendar Sync', value: 'Google Calendar' },
     ],
     features: [
-      'Manifest V3 Architecture',
-      'Google Calendar Notification Sync',
-      'Automated Deadline Reminders',
-      'Chrome Web Store & Edge Add-ons Published',
+      '💻 PC / Desktop Edition: Live Manifest V3 browser extension on Chrome Web Store & Edge Add-ons with Google Calendar sync',
+      '📱 Mobile Edition (Android Only): Standalone Flutter & Dart app powered by Kotlin Native Background Services & AlarmManager',
+      '⚡ Multi-Platform Reminder Engine: Automated background alarms & notifications before opportunity deadlines expire',
+      '🔒 Privacy & State: Firebase Authentication and secure local storage architecture',
+      '📥 Direct 1-Click Android APK Download: Instant mobile installation without external app store dependencies',
     ],
-    techStack: ['JavaScript', 'Chrome Extension API', 'Manifest V3', 'Google Calendar API'],
+    techStack: [
+      'Flutter (Mobile)',
+      'Dart',
+      'Kotlin Native Background Services',
+      'AlarmManager',
+      'Firebase Auth & Local Storage',
+      'Chrome Extension Manifest V3 (PC)',
+      'Microsoft Edge Add-ons (PC)',
+      'Google Calendar API',
+    ],
   },
   {
     id: 'sikkanam',
@@ -144,26 +156,58 @@ export default function Projects() {
                 </div>
 
                 <div className="playground-actions">
-                  <a
-                    href={current.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-primary btn-sm"
-                    id={`btn-visit-${current.id}`}
-                  >
-                    <ExternalLink size={14} />
-                    {current.edgeAddonsUrl ? 'Chrome Web Store' : 'Visit Product'}
-                  </a>
-                  {current.edgeAddonsUrl && (
+                  {current.edgeAddonsUrl ? (
+                    <>
+                      <a
+                        href={current.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn-primary btn-sm"
+                        id={`btn-visit-${current.id}`}
+                      >
+                        <ExternalLink size={14} />
+                        Chrome Web Store (PC)
+                      </a>
+                      <a
+                        href={current.edgeAddonsUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn-secondary btn-sm"
+                        id={`btn-edge-${current.id}`}
+                      >
+                        <ExternalLink size={14} />
+                        Edge Add-ons (PC)
+                      </a>
+                    </>
+                  ) : (
                     <a
-                      href={current.edgeAddonsUrl}
+                      href={current.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="btn btn-secondary btn-sm"
-                      id={`btn-edge-${current.id}`}
+                      className="btn btn-primary btn-sm"
+                      id={`btn-visit-${current.id}`}
                     >
                       <ExternalLink size={14} />
-                      Edge Add-ons
+                      Visit Product
+                    </a>
+                  )}
+
+                  {'apkUrl' in current && current.apkUrl && (
+                    <a
+                      href={current.apkUrl}
+                      download="marakadhey_mobile.apk"
+                      className="btn btn-secondary btn-sm"
+                      id={`btn-apk-${current.id}`}
+                      title="1-Click Download Marakadhey Mobile (Android Only)"
+                      style={{
+                        borderColor: `${current.accent}80`,
+                        backgroundColor: `${current.accent}15`,
+                        color: 'var(--text-primary)',
+                        fontWeight: 600,
+                      }}
+                    >
+                      <Download size={14} style={{ color: current.accent }} />
+                      Download Marakadhey Mobile
                     </a>
                   )}
                   {current.productHuntUrl && (
@@ -180,6 +224,37 @@ export default function Projects() {
                   )}
                 </div>
               </div>
+
+              {'apkUrl' in current && (
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '0.45rem',
+                    padding: '0.75rem 1rem',
+                    borderRadius: '10px',
+                    background: 'rgba(168, 85, 247, 0.08)',
+                    border: `1px solid ${current.accent}40`,
+                    fontSize: '0.84rem',
+                    lineHeight: '1.45',
+                    color: 'var(--text-secondary)',
+                    marginBottom: '1.25rem',
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
+                    <Smartphone size={16} style={{ color: current.accent, flexShrink: 0 }} />
+                    <span>
+                      <strong style={{ color: 'var(--text-primary)' }}>📱 For Mobile (Android Only):</strong> Click <strong>Download Marakadhey Mobile</strong> to get the 1-click APK installer.
+                    </span>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
+                    <Monitor size={16} style={{ color: '#38bdf8', flexShrink: 0 }} />
+                    <span>
+                      <strong style={{ color: 'var(--text-primary)' }}>💻 For PC / Laptop Users:</strong> Add the extension to your desktop browser via <strong>Chrome Web Store</strong> or <strong>Edge Add-ons</strong>.
+                    </span>
+                  </div>
+                </div>
+              )}
 
               <p className="playground-tagline">{current.tagline}</p>
 

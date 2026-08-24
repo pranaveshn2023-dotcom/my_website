@@ -39,12 +39,14 @@ A personal finance learning platform featuring portfolio strategy simulations, m
 - **Product Hunt:** [valarchix](https://www.producthunt.com/products/valarchix)
 
 ### Marakadhey — Don't Lose Opportunities
-*2026 – Present | JavaScript, Chrome Manifest V3*
+*2026 – Present | Flutter, Dart, Kotlin Native Background Services, AlarmManager, Firebase Auth, Local Storage, Chrome Manifest V3*
 
-A live browser extension available on both Chrome Web Store and Microsoft Edge Add-ons that helps users save important webpages and receive automated reminders before deadlines. Syncs browser notifications with Google Calendar.
+A dedicated Android mobile app and live browser extension on Chrome Web Store & Microsoft Edge Add-ons that helps users save important webpages, track opportunities, and sets automated alarm & background reminders before deadlines.
 
-- **Chrome Web Store:** [Marakadhey-Never Miss Opportunities](https://chromewebstore.google.com/detail/marakadhey/inidbaohifkncdjnondbkljhoogkhnce)
-- **Microsoft Edge Add-ons:** [Marakadhey–Never Miss Opp](https://microsoftedge.microsoft.com/addons/detail/marakadhey%E2%80%93never-miss-opp/cmndbipcnkkmeojkioajenbckapcfpla)
+- **Mobile App (Android):** Direct 1-Click APK Download (`/marakadhey_mobile.apk`)
+- **PC / Laptop Extension:**
+  - **Chrome Web Store:** [Marakadhey-Never Miss Opportunities](https://chromewebstore.google.com/detail/marakadhey/inidbaohifkncdjnondbkljhoogkhnce)
+  - **Microsoft Edge Add-ons:** [Marakadhey–Never Miss Opp](https://microsoftedge.microsoft.com/addons/detail/marakadhey%E2%80%93never-miss-opp/cmndbipcnkkmeojkioajenbckapcfpla)
 
 ### Sikkanam — Tamil Nadu Budget Travel Planner
 *2025 – Present | React, TypeScript, Tailwind CSS, Custom OSRM*
