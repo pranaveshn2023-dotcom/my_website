@@ -166,7 +166,7 @@ export default function Projects() {
                         id={`btn-visit-${current.id}`}
                       >
                         <ExternalLink size={14} />
-                        Chrome Web Store (PC)
+                        <span>Chrome Web Store (PC)</span>
                       </a>
                       <a
                         href={current.edgeAddonsUrl}
@@ -176,7 +176,7 @@ export default function Projects() {
                         id={`btn-edge-${current.id}`}
                       >
                         <ExternalLink size={14} />
-                        Edge Add-ons (PC)
+                        <span>Edge Add-ons (PC)</span>
                       </a>
                     </>
                   ) : (
@@ -188,7 +188,7 @@ export default function Projects() {
                       id={`btn-visit-${current.id}`}
                     >
                       <ExternalLink size={14} />
-                      Visit Product
+                      <span>Visit Product</span>
                     </a>
                   )}
 
@@ -201,13 +201,13 @@ export default function Projects() {
                       title="1-Click Download Marakadhey Mobile (Android Only)"
                       style={{
                         borderColor: `${current.accent}80`,
-                        backgroundColor: `${current.accent}15`,
+                        backgroundColor: `${current.accent}20`,
                         color: 'var(--text-primary)',
                         fontWeight: 600,
                       }}
                     >
                       <Download size={14} style={{ color: current.accent }} />
-                      Download Marakadhey Mobile
+                      <span>Download Android APK</span>
                     </a>
                   )}
                   {current.productHuntUrl && (
@@ -219,7 +219,7 @@ export default function Projects() {
                       id={`btn-ph-${current.id}`}
                     >
                       <Rocket size={14} />
-                      Product Hunt
+                      <span>Product Hunt</span>
                     </a>
                   )}
                 </div>
@@ -244,7 +244,7 @@ export default function Projects() {
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
                     <Smartphone size={16} style={{ color: current.accent, flexShrink: 0 }} />
                     <span>
-                      <strong style={{ color: 'var(--text-primary)' }}>📱 For Mobile (Android Only):</strong> Click <strong>Download Marakadhey Mobile</strong> to get the 1-click APK installer.
+                      <strong style={{ color: 'var(--text-primary)' }}>📱 For Mobile (Android Only):</strong> Click <strong>Download Android APK</strong> to get the 1-click APK installer.
                     </span>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
