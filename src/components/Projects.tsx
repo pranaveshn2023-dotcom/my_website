@@ -61,7 +61,7 @@ const projectsData = [
     category: 'TN Budget Travel Planner ',
     accent: '#EA580C',
     logo: '/sikkanam-logo.jpg',
-    tagline: 'A privacy-first full stack travel PWA for 100 TN Cities built with React, TypeScript, and Tailwind CSS. Features a custom OSRM mapping engine with dynamic 1.25x to 1.40x traffic & terrain scaling, TNSTC/IRCTC transit fare pipelines, Google Gemini & Groq API orchestration, and 100 SEO / 96 Accessibility Lighthouse scores.',
+    tagline: 'A privacy-first full stack travel PWA for 100 TN Cities built with React, TypeScript, and Tailwind CSS. Features a custom OSRM mapping engine with dynamic 1.25x to 1.40x traffic & terrain scaling, TNSTC/IRCTC transit fare pipelines, Google Gemini & Groq API orchestration, and Top website with 100 SEO score.',
     liveUrl: 'https://sikkanam.vercel.app',
     productHuntUrl: 'https://www.producthunt.com/products/sikkanam',
     metrics: [
