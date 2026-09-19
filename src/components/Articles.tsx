@@ -56,6 +56,17 @@ const articlesData = [
     accent: '#10b981',
     tags: ['React', 'TypeScript', 'Valarchi Vaathi', 'Local Privacy'],
   },
+  {
+    title: 'Panam Paaru: Architecting a Neo-Brutalist FinTech PWA with Live P/L & Expense Tracking',
+    category: 'FinTech & Cloud Architecture',
+    readTime: '6 min read',
+    date: '2026',
+    summary:
+      'How we built a high-contrast Neo-Brutalist PWA featuring 35s IST market ticks for live equity & mutual fund P/L, atomic double-entry expense tracking, and reactive Convex cloud persistence.',
+    link: 'https://panampaaru.vercel.app',
+    accent: '#FFE600',
+    tags: ['React 19', 'Neo-Brutalism', 'PWA', 'Convex Cloud', 'Live P/L Engine'],
+  },
 ]
 
 export default function Articles() {

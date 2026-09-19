@@ -77,7 +77,8 @@ export default function Hero({ onOpenResume }: HeroProps) {
             </motion.div>
 
             <motion.p variants={itemVariants} className="hero-description-sub">
-              Express Creator of <span className="highlight">ValarchiX</span>,{' '}
+              Express Creator of <span className="highlight">Panam Paaru</span>,{' '}
+              <span className="highlight">ValarchiX</span>,{' '}
               <span className="highlight">Marakadhey Extension</span> &{' '}
               <span className="highlight">Sikkanam OSRM Engine</span>
             </motion.p>
@@ -87,7 +88,7 @@ export default function Hero({ onOpenResume }: HeroProps) {
               <div className="hero-stat-card">
                 <div className="stat-header-row">
                   <Compass size={14} style={{ color: '#22d3ee' }} />
-                  <span className="hero-stat-number">3</span>
+                  <span className="hero-stat-number">4</span>
                 </div>
                 <span className="hero-stat-label">Live Express Products</span>
               </div>

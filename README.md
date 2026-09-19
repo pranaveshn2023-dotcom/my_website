@@ -56,6 +56,15 @@ A privacy-first full-stack travel PWA for 80+ destinations featuring a custom OS
 - **Site:** [sikkanam.vercel.app](https://sikkanam.vercel.app)
 - **Product Hunt:** [sikkanam](https://www.producthunt.com/products/sikkanam)
 
+### Panam Paaru (பணம் பாரு) — Neo-Brutalist FinTech PWA (Live P/L & Expense Tracker)
+*2026 – Present | React 19, TypeScript, Convex Cloud DB & Crons, PWA, Tailwind CSS, Neo-Brutalism*
+
+A real-time personal finance, cashflow, and portfolio tracking PWA engineered for high-precision visibility over multi-asset wealth and daily spending with live P/L. Built with a high-contrast Neo-Brutalist design language (`#FFE600` sunny gold & deep carbon contrast), combining atomic double-entry banking accounts, calendar-aware recurring budgets (leap-year and variable month-end safe), universal client-side statement ingestion (CAMS/KFintech/Zerodha/Groww via `Ctrl+U`), and an intelligent Indian market valuation engine (35s live IST ticks during NSE/BSE trading hours; zero waste off-hours; nightly AMC AMFI NAV crons) backed by a reactive Convex cloud backend.
+
+- **Site:** [panampaaru.vercel.app](https://panampaaru.vercel.app)
+- **GitHub:** [pranaveshn2023-dotcom/Panam-Paaru](https://github.com/pranaveshn2023-dotcom/Panam-Paaru)
+- **Tagline:** *"See Your Money, Control Your Spending"*
+
 ## 🛠️ Skills
 
 ### Languages & Frontend

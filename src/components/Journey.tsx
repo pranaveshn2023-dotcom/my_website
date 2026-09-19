@@ -25,14 +25,21 @@ const stationRoute = [
     text: 'Published Marakadhey browser extension on Chrome Web Store and Microsoft Edge Add-ons, and shipped ValarchiX personal finance platform featuring Valarchi Vaathi AI tutor.',
   },
   {
-    station: 'Station 04 • Danfoss Industry Depot',
+    station: 'Station 04 • Panam Paaru Wealth Terminal',
+    year: '2026',
+    status: 'On Track',
+    accent: '#ffe600',
+    text: 'Architected and launched Panam Paaru, a real-time Neo-Brutalist personal finance and portfolio tracking platform with Convex cloud backend and IST market engine.',
+  },
+  {
+    station: 'Station 05 • Danfoss Industry Depot',
     year: '2026',
     status: 'Completed Stop',
     accent: '#10b981',
     text: 'Completed Student Internship at Danfoss Industries Pvt Ltd, engineering Power Apps timesheet automation and Power BI analytics.',
   },
   {
-    station: 'Station 05 • VIT Chennai Terminus',
+    station: 'Station 06 • VIT Chennai Terminus',
     year: '2027 Express Arrival',
     status: 'On Track',
     accent: '#f59e0b',

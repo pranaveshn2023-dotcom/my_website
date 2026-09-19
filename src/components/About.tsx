@@ -83,7 +83,7 @@ export default function About({ onOpenResume }: AboutProps) {
             transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] as const }}
           >
             {[
-              { value: '3', label: 'Products Shipped' },
+              { value: '4', label: 'Products Shipped' },
               { value: '🚀', label: 'Product Hunt Launch' },
               { value: '✅', label: 'Chrome Web Store and Edge Add-ons Published' },
               { value: '🎓', label: 'ECE @ VIT Chennai' },

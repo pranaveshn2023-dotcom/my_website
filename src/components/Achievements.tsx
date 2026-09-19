@@ -13,6 +13,7 @@ import {
   Bell,
   TrendingUp,
   Boxes,
+  Wallet,
 } from 'lucide-react'
 
 const achievements = [
@@ -47,8 +48,13 @@ const achievements = [
     type: 'lucide',
   },
   {
+    icon: <Wallet />,
+    text: 'Panam Paaru — Neo-Brutalist Finance & Valuation Engine',
+    type: 'lucide',
+  },
+  {
     icon: <Boxes />,
-    text: '3 Live Products Built & Published',
+    text: '4 Live Products Built & Published',
     type: 'lucide',
   },
 ]
