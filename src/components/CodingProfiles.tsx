@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { ExternalLink, Code2, Terminal, Award, Cpu } from 'lucide-react'
+import { ExternalLink, Terminal } from 'lucide-react'
 import Card3D from './3d/Card3D'
 
 const profiles = [
@@ -12,33 +12,6 @@ const profiles = [
     accent: '#22d3ee',
     icon: <Terminal size={22} />,
     description: 'Repositories for Panam Paaru, ValarchiX, Sikkanam PWA, Marakadhey Extension, and full stack projects.',
-  },
-  {
-    name: 'LeetCode',
-    handle: 'Pranavesh N',
-    url: 'https://leetcode.com',
-    badge: 'Problem Solving',
-    accent: '#f59e0b',
-    icon: <Code2 size={22} />,
-    description: 'Data structures, algorithms, and logical problem solving in Python, C++, and JavaScript.',
-  },
-  {
-    name: 'SkillRack',
-    handle: 'Pranavesh N',
-    url: 'https://www.skillrack.com',
-    badge: 'Automated Coding Benchmarks',
-    accent: '#a855f7',
-    icon: <Award size={22} />,
-    description: 'Daily programming challenges, speed coding, and core algorithmic benchmarks.',
-  },
-  {
-    name: 'CSC Certificate',
-    handle: 'C, C++, Python, Java',
-    url: '#about',
-    badge: 'Certified',
-    accent: '#10b981',
-    icon: <Cpu size={22} />,
-    description: 'Certified 4 program covering core languages, object-oriented programming, and systems logic.',
   },
 ]
 
@@ -56,10 +29,10 @@ export default function CodingProfiles() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] as const }}
         >
-          <p className="section-label">Coding Profiles & Credentials</p>
-          <h2 className="section-title">Algorithmic & Code Hub</h2>
+          <p className="section-label">Code Repository</p>
+          <h2 className="section-title">GitHub Profile</h2>
           <p className="section-subtitle">
-            Platforms where I hone problem solving, algorithm design, and code benchmarks.
+            Open-source repositories, platform architectures, and production releases.
           </p>
         </motion.div>
 

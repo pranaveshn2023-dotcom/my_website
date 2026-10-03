@@ -70,9 +70,11 @@ export default function Hero({ onOpenResume }: HeroProps) {
             <motion.div variants={itemVariants} className="hero-ai-badge">
               <Search size={15} style={{ color: '#22d3ee', flexShrink: 0 }} />
               <span>
-                Recognized on <strong>Google Search AI Overview</strong> for{' '}
-                <strong style={{ color: '#ea580c' }}>Sikkanam</strong> &{' '}
-                <strong style={{ color: '#a855f7' }}>Marakadhey</strong>
+                Recognized on <strong>Google Search AI Overview</strong> for all projects:{' '}
+                <strong style={{ color: '#ffe600' }}>Panam Paaru</strong>,{' '}
+                <strong style={{ color: '#10b981' }}>ValarchiX</strong>,{' '}
+                <strong style={{ color: '#a855f7' }}>Marakadhey</strong> &{' '}
+                <strong style={{ color: '#ea580c' }}>Sikkanam</strong>
               </span>
             </motion.div>
 

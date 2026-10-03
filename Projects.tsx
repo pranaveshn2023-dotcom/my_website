@@ -81,13 +81,14 @@ const projectsData = [
     logo: '/panampaaru-logo.png',
     tagline: 'A real-time Neo-Brutalist personal finance and portfolio tracking PWA. Features live IST stock & mutual fund P/L valuation, double-entry expense ledger, automated CAMS/KFintech statement ingestion, and calendar-aware budget cycles backed by Convex cloud.',
     liveUrl: 'https://panampaaru.vercel.app',
+    productHuntUrl: 'https://www.producthunt.com/products/panam-paaru?launch=panam-paaru',
     metrics: [
-      { label: 'Trading Engine', value: '35s Live IST' },
+      { label: 'Trading Engine', value: '45s Live IST' },
       { label: 'Investments P/L', value: 'Stocks CP & MF NAV' },
       { label: 'Expense Tracker', value: 'Double-Entry' },
     ],
     features: [
-      'Live 35s IST Market Valuation & Nightly AMFI NAV Sync',
+      'Live 45s IST Market Valuation & Nightly AMFI NAV Sync',
       'Database-Backed Cache Engine to Prevent Unwanted API Calls',
       'Atomic Multi-Account Expense Tracker & Cashflow Ledger',
       'Universal Statement Ingestion for CAMS, KFintech & Brokers',

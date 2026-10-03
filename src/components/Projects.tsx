@@ -87,6 +87,7 @@ const projectsData = [
     logo: '/panampaaru-logo.png',
     tagline: 'A real-time Neo-Brutalist Style Personal Finance & Portfolio Tracking . Features live IST stock & mutual fund P/L valuation, database-backed caching to prevent unwanted API calls, double-entry expense ledger, and 1 click statement ingestion.',
     liveUrl: 'https://panampaaru.vercel.app',
+    productHuntUrl: 'https://www.producthunt.com/products/panam-paaru?launch=panam-paaru',
     metrics: [
       { label: 'Trading Engine', value: '35s Live IST' },
       { label: 'Investments P/L', value: 'Stocks CP & MF NAV' },

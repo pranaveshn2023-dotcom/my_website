@@ -6,12 +6,12 @@ BTech(ECE) student at VIT Chennai, focused on Product Development and full-stack
 
 I'm an Electronics and Communication Engineering student at Vellore Institute of Technology (VIT Chennai) with a passion for building practical, real-world products. My work spans full-stack web development, progressive web apps, and AI-integrated platforms — always with a privacy-first, user-centric approach.
 
-- **Email:** pranaveshnandakumar@gmail.com
+- **Email:** [EMAIL_ADDRESS]
 - **Location:** Chennai, Tamil Nadu
-- **Portfolio:** [pranaveshn.github.io](https://github.com/pranaveshn2023-dotcom/my_website)
+- **Portfolio:** [pranaveshn.vercel.app](https://pranaveshn.vercel.app)
 - **LinkedIn:** [in/pranavesh-n](https://linkedin.com/in/pranavesh-n)
-- **GitHub:** [@pranaveshn2023-dotcom](https://github.com/pranaveshn2023-dotcom)
-- **Product Hunt:** [Sikkanam](https://www.producthunt.com/products/sikkanam) | [ValarchiX](https://www.producthunt.com/products/valarchix)
+- **GitHub:** [@pranaveshn2023-dotcom](https://github.com/pranavesh-n)
+- **Product Hunt:** [MyProducts](https://www.producthunt.com/my-products)
 
 ## 🎓 Education
 
@@ -62,7 +62,7 @@ A privacy-first full-stack travel PWA for 80+ destinations featuring a custom OS
 A real-time personal finance, cashflow, and portfolio tracking PWA engineered for high-precision visibility over multi-asset wealth and daily spending with live P/L. Built with a high-contrast Neo-Brutalist design language (`#FFE600` sunny gold & deep carbon contrast), combining atomic double-entry banking accounts, calendar-aware recurring budgets (leap-year and variable month-end safe), universal client-side statement ingestion (CAMS/KFintech/Zerodha/Groww via `Ctrl+U`), and an intelligent Indian market valuation engine (35s live IST ticks during NSE/BSE trading hours; zero waste off-hours; nightly AMC AMFI NAV crons) backed by a reactive Convex cloud backend.
 
 - **Site:** [panampaaru.vercel.app](https://panampaaru.vercel.app)
-- **GitHub:** [pranaveshn2023-dotcom/Panam-Paaru](https://github.com/pranaveshn2023-dotcom/Panam-Paaru)
+- **ProductHunt:** [PanamPaaru](https://www.producthunt.com/products/panam-paaru?launch=panam-paaru)
 - **Tagline:** *"See Your Money, Control Your Spending"*
 
 ## 🛠️ Skills

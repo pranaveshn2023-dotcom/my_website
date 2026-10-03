@@ -64,6 +64,16 @@ const articlesData = [
     summary:
       'How we built a high-contrast Neo-Brutalist PWA featuring 35s IST market ticks for live equity & mutual fund P/L, atomic double-entry expense tracking, and reactive Convex cloud persistence.',
     link: 'https://panampaaru.vercel.app',
+    links: [
+      {
+        label: 'Visit Live Web App',
+        url: 'https://panampaaru.vercel.app',
+      },
+      {
+        label: 'Product Hunt Launch',
+        url: 'https://www.producthunt.com/products/panam-paaru?launch=panam-paaru',
+      },
+    ],
     accent: '#FFE600',
     tags: ['React 19', 'Neo-Brutalism', 'PWA', 'Convex Cloud', 'Live P/L Engine'],
   },

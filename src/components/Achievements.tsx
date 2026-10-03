@@ -139,17 +139,6 @@ export default function Achievements() {
             </motion.div>
           ))}
         </div>
-
-        {/* Built by Pranavesh */}
-        <motion.p
-          className="achievements-credit"
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.9 }}
-        >
-          Built by Pranavesh
-        </motion.p>
-
       </div>
     </section>
   )
