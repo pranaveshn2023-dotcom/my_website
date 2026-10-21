@@ -11,7 +11,7 @@ const profiles = [
     badge: '4 Open Source products',
     accent: '#22d3ee',
     icon: <Terminal size={22} />,
-    description: 'Repositories for Panam Paaru, ValarchiX, Sikkanam PWA, Marakadhey Extension, and full stack projects.',
+    description: 'Repositories for Panam Dekho, ValarchiX, Sikkanam PWA, Marakadhey Extension, and full stack projects.',
   },
 ]
 

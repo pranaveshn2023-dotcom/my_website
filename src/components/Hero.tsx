@@ -70,8 +70,7 @@ export default function Hero({ onOpenResume }: HeroProps) {
             <motion.div variants={itemVariants} className="hero-ai-badge">
               <Search size={15} style={{ color: '#22d3ee', flexShrink: 0 }} />
               <span>
-                Recognized on <strong>Google Search AI Overview</strong> for all projects:{' '}
-                <strong style={{ color: '#ffe600' }}>Panam Paaru</strong>,{' '}
+                Recognized on <strong>Google Search AI Overview</strong> for my works:{' '}
                 <strong style={{ color: '#10b981' }}>ValarchiX</strong>,{' '}
                 <strong style={{ color: '#a855f7' }}>Marakadhey</strong> &{' '}
                 <strong style={{ color: '#ea580c' }}>Sikkanam</strong>
@@ -79,10 +78,10 @@ export default function Hero({ onOpenResume }: HeroProps) {
             </motion.div>
 
             <motion.p variants={itemVariants} className="hero-description-sub">
-              Express Creator of <span className="highlight">Panam Paaru</span>,{' '}
+              Express Creator of <span className="highlight">Panam Dekho</span>,{' '}
               <span className="highlight">ValarchiX</span>,{' '}
               <span className="highlight">Marakadhey Extension</span> &{' '}
-              <span className="highlight">Sikkanam OSRM Engine</span>
+              <span className="highlight">Sikkanam</span>
             </motion.p>
 
             {/* Locomotive Telemetry Dashboard */}

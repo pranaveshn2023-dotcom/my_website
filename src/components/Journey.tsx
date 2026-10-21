@@ -25,11 +25,11 @@ const stationRoute = [
     text: 'Published Marakadhey browser extension on Chrome Web Store and Microsoft Edge Add-ons, and shipped ValarchiX personal finance platform featuring Valarchi Vaathi AI tutor.',
   },
   {
-    station: 'Station 04 • Panam Paaru Wealth Terminal',
+    station: 'Station 04 • Panam Dekho Wealth Terminal',
     year: '2026',
     status: 'On Track',
     accent: '#ffe600',
-    text: 'Architected and launched Panam Paaru, a real-time Neo-Brutalist personal finance and portfolio tracking platform with Convex cloud backend and IST market engine.',
+    text: 'Architected and launched Panam Dekho, a real-time Neo-Brutalist personal finance and portfolio tracking platform with Convex cloud backend and IST market engine.',
   },
   {
     station: 'Station 05 • Danfoss Industry Depot',

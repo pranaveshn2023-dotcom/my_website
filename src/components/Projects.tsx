@@ -80,8 +80,8 @@ const projectsData = [
   {
     id: 'panampaaru',
     platform: 'Platform 04',
-    name: 'Panam Paaru',
-    tabLabel: 'Panam Paaru',
+    name: 'Panam Dekho',
+    tabLabel: 'Panam Dekho',
     category: 'See Your Money and Control Your Spendings',
     accent: '#FFE600',
     logo: '/panampaaru-logo.png',

@@ -74,8 +74,8 @@ const projectsData = [
   },
   {
     id: 'panampaaru',
-    name: 'Panam Paaru',
-    tabLabel: 'Panam Paaru',
+    name: 'Panam Dekho',
+    tabLabel: 'Panam Dekho',
     category: 'Neo-Brutalist FinTech PWA',
     accent: '#FFE600',
     logo: '/panampaaru-logo.png',

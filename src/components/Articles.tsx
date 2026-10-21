@@ -57,7 +57,7 @@ const articlesData = [
     tags: ['React', 'TypeScript', 'Valarchi Vaathi', 'Local Privacy'],
   },
   {
-    title: 'Panam Paaru: Architecting a Neo-Brutalist FinTech PWA with Live P/L & Expense Tracking',
+    title: 'Panam Dekho: Architecting a Neo-Brutalist FinTech PWA with Live P/L & Expense Tracking',
     category: 'FinTech & Cloud Architecture',
     readTime: '6 min read',
     date: '2026',

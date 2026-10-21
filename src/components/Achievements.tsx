@@ -49,7 +49,7 @@ const achievements = [
   },
   {
     icon: <Wallet />,
-    text: 'Panam Paaru — Neo-Brutalist Finance & Valuation Engine',
+    text: 'Panam Dekho — Neo-Brutalist Finance & Valuation Engine',
     type: 'lucide',
   },
   {
